@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-class StateManager : MonoBehaviour
+public class StateManager : MonoBehaviour
 {
     public static StateManager instance = null;
     public enum gameState
@@ -18,8 +18,7 @@ class StateManager : MonoBehaviour
 
     public void Awake()
     {
-        if (instance == null) instance = this;
-        else if (instance != this) Destroy(gameObject);
+        MainManager.State = this;
     }
 
     public void SwitchState(gameState targetState)

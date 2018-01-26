@@ -14,6 +14,11 @@ public class LevelManager : MonoBehaviour
 		get { return LevelManager._self; }
 	}
 
+	protected void Awake()
+	{
+		_self = this;
+	}
+
 	public void LoadInitialLevel()
 	{
 		LoadLevel("splash_screen");
@@ -26,7 +31,13 @@ public class LevelManager : MonoBehaviour
 			SceneManager.UnloadSceneAsync(currentScene);
 		}
 
+		if (SceneManager.sceneCount > 1)
+		{
+			Debug.Log("A level has already been loaded.");
+			return;
+		}
+
 		currentScene = name;
-		SceneManager.LoadScene(name);
+		SceneManager.LoadScene(name, LoadSceneMode.Additive);
 	}
 }
