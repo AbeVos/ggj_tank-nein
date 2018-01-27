@@ -34,3 +34,5 @@ sysinfo.txt
 *.unitypackage
 
 FMOD_GJ18/.*
+
+.vscode

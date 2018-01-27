@@ -7,10 +7,10 @@ public class TankAiming : MonoBehaviour
     [SerializeField] private float turretPanSpeed = 1f;
     [SerializeField] private float turretTiltSpeed = 1f;
 
+    [SerializeField] private Ammo currentAmmoType = Ammo.Laser;
+
     private Transform parent;
     private Transform cannon;
-
-    private Ammo currentAmmoType;
 
     public Ammo CurrentAmmoType
     {
@@ -25,11 +25,12 @@ public class TankAiming : MonoBehaviour
         parent = transform.parent;
         cannon = transform.GetChild(0);
 
-        currentAmmoType = Ammo.Laser;
-
         lockedOn = false;
         lockTarget = null;
+    }
 
+    protected void Start()
+    {
         MainManager.Manager.TankTurret = this;
     }
 
@@ -100,7 +101,14 @@ public class TankAiming : MonoBehaviour
         if (Physics.Raycast(cannon.position, cannon.forward, out hit, Mathf.Infinity, mask))
         {
             lockTarget = hit.transform.parent;
-            return true;
+
+            ITank tank = lockTarget.GetComponent<ITank>();
+
+            if (tank != null)
+            {
+                Debug.Log(currentAmmoType + "," + tank.Weakness + ", " + tank.GetType());
+                return true && !tank.Destroyed && currentAmmoType == tank.Weakness;
+            }
         }
 
         return false;
