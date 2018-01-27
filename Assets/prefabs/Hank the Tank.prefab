@@ -270,7 +270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rPM: 0
   maxrPM: 0
-  speed: 3
+  verticalSpeed: 3
+  horizontalSpeed: 3
 --- !u!124 &124108908883993496
 Behaviour:
   m_ObjectHideFlags: 1
