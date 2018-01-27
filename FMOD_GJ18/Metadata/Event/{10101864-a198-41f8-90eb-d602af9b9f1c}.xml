@@ -116,7 +116,7 @@
     </object>
     <object class="EventMixerMaster" id="{c71e01e0-830c-4cb8-8f9a-1befff4df69d}">
         <property name="volume">
-            <value>-3</value>
+            <value>1</value>
         </property>
         <relationship name="effectChain">
             <destination>{9c0f3c50-0df7-451b-be94-c61f4e4fb79c}</destination>
@@ -408,7 +408,7 @@
     </object>
     <object class="Sidechain" id="{30f529f5-7cb3-4c7b-b542-92cf0665de80}">
         <relationship name="targets">
-            <destination>{eb2c87c4-a455-44e3-9973-156c472a6aa7}</destination>
+            <destination>{fb83f11a-b721-4df7-8423-b6c3ea6069cc}</destination>
         </relationship>
     </object>
     <object class="MixerBusFader" id="{f17ac471-6ddf-4fda-ac4f-60daf1305148}"/>
