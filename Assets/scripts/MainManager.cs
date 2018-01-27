@@ -7,6 +7,8 @@ public class MainManager : MonoBehaviour
 	private static MainManager _self;
 	private StateManager _stateManager;
 
+    public TankAiming TankTurret { get; set; }
+
 	public static MainManager Manager
 	{
 		get { return MainManager._self; }

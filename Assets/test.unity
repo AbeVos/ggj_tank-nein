@@ -767,6 +767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9939b8f9282c61d408a1979f4f89f3bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeToCheck: 
   cControlObjects:
   - {fileID: 1103281103}
   - {fileID: 112756429}
@@ -775,6 +776,12 @@ MonoBehaviour:
   - {fileID: 444311769}
   - {fileID: 1819901876}
   consoleBackground: {fileID: 1136886078}
+  Codes:
+  - {fileID: 11400000, guid: 454b0bde0d1e6f4488bc405c5e3ccc3c, type: 2}
+  - {fileID: 11400000, guid: 4b4c6d868663ba54b8f33460aa8d0663, type: 2}
+  - {fileID: 11400000, guid: d411a7184382d1d45818f6344cc38e3f, type: 2}
+  engineCodes:
+  - {fileID: 11400000, guid: d411a7184382d1d45818f6344cc38e3f, type: 2}
 --- !u!1 &1074286972
 GameObject:
   m_ObjectHideFlags: 0

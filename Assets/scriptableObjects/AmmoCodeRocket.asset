@@ -8,7 +8,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20b8ae7d8248ad34aa5dd6975aac2fd5, type: 3}
-  m_Name: AmmoCode2
+  m_Script: {fileID: 11500000, guid: d39353964a1f4e8499b376f7f5e4d776, type: 3}
+  m_Name: AmmoCodeRocket
   m_EditorClassIdentifier: 
-  cControlObjectStates: 030000000100000001000000
+  correctCode: 030000000200000002000000
+  currentAmmoType: 1
