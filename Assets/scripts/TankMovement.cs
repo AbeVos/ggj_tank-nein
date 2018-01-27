@@ -11,6 +11,7 @@ public class TankMovement : MonoBehaviour
     private bool isCoupled;
 
     private int currentGear;
+    private int previousDirection;
     private int currentForwardDirection;
     private int currentSidewaysDirection;
     [SerializeField] private int maxrPM;
@@ -43,19 +44,22 @@ public class TankMovement : MonoBehaviour
     {
         currentForwardDirection = (int)Input.GetAxis("Controlpad Vertical");
 
-        if (currentForwardDirection != 0) buttonPressMomentum += Time.deltaTime;
+        if (currentForwardDirection != 0)
+        {
+            buttonPressMomentum += Time.deltaTime;
+            previousDirection = currentForwardDirection;
+        }
         else
         {
             buttonPressMomentum -= Time.deltaTime;
-            currentForwardDirection = 1;
         }
 
+        Vector3 forward = transform.forward * previousDirection;
         buttonPressMomentum = Mathf.Clamp(buttonPressMomentum, 0, accelerationPeriod[currentGear]);
-        Vector3 forward = currentForwardDirection * transform.forward;
         float acceleration = RPM(buttonPressMomentum);
-        float magnitude = Mathf.Lerp(acceleration, controller.velocity.magnitude, Time.deltaTime);
+        Vector3 velocity = 0.5f * controller.velocity + acceleration * forward;
 
-        controller.SimpleMove(magnitude * forward);
+        controller.SimpleMove(velocity);
     }
 
     private float RPM(float buttonPressDuration)
@@ -66,7 +70,7 @@ public class TankMovement : MonoBehaviour
     private void Rotation()
     {
         currentSidewaysDirection = (int)Input.GetAxis("Controlpad Horizontal");
-        float rotation = 1f / (controller.velocity.magnitude + 1) * angularVelocity * currentSidewaysDirection;
+        float rotation = -1f / (controller.velocity.magnitude + 1) * angularVelocity * currentSidewaysDirection;
         controller.transform.eulerAngles += rotation * transform.up;
     }
 
