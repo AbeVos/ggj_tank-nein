@@ -503,6 +503,32 @@ MonoBehaviour:
   - {fileID: 21300004, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
   - {fileID: 21300006, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
   - {fileID: 21300000, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+--- !u!1 &514053381 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1092313396599480, guid: 4424c2a477335164b8e67ee9a8a521f8,
+    type: 2}
+  m_PrefabInternal: {fileID: 829913425}
+--- !u!114 &514053382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 514053381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982ea6ea211ed4ab0956da628f482364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brakeOneShotEvent: event:/Tank_Braking_oneshot
+  brakeInstanceEvent: event:/Tank_Braking_loop
+  engineEvent: event:/Tank_Engine_01
+  ambienceEvent: event:/Tank_Ambience_01
+  clutchOneShotEvent: event:/Tank_koppeling
+  gearshiftOneShotEvent: event:/Tank_Gearshift
+  brakeParam: Tank_braking
+  engineSpeedParam: tank_speed
+  engineClutchParam: koppeling
+  ambienceSpeedParam: tank_speed
 --- !u!1 &555481509
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +905,26 @@ Prefab:
       propertyPath: rpmPivot
       value: 
       objectReference: {fileID: 708690465}
+    - target: {fileID: 114605941353645218, guid: 4424c2a477335164b8e67ee9a8a521f8,
+        type: 2}
+      propertyPath: maxAcceleration.Array.data[3]
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114605941353645218, guid: 4424c2a477335164b8e67ee9a8a521f8,
+        type: 2}
+      propertyPath: maxAcceleration.Array.data[4]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114605941353645218, guid: 4424c2a477335164b8e67ee9a8a521f8,
+        type: 2}
+      propertyPath: maxAcceleration.Array.data[5]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114605941353645218, guid: 4424c2a477335164b8e67ee9a8a521f8,
+        type: 2}
+      propertyPath: maxAcceleration.Array.data[6]
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4424c2a477335164b8e67ee9a8a521f8, type: 2}
   m_IsPrefabParent: 0

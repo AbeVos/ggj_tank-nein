@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23143885318451452}
   - component: {fileID: 143590092023107390}
   - component: {fileID: 114605941353645218}
+  - component: {fileID: 114273916326880632}
   m_Layer: 0
   m_Name: Hank the Tank
   m_TagString: Player
@@ -246,6 +247,27 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413648163959264}
   m_Enabled: 1
+--- !u!114 &114273916326880632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1092313396599480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982ea6ea211ed4ab0956da628f482364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brakeOneShotEvent: event:/Tank_Braking_oneshot
+  brakeInstanceEvent: event:/Tank_Braking_loop
+  engineEvent: event:/Tank_Engine_01
+  ambienceEvent: event:/Tank_Ambience_01
+  clutchOneShotEvent: event:/Tank_koppeling
+  gearshiftOneShotEvent: event:/Tank_Gearshift
+  brakeParam: Tank_braking
+  engineSpeedParam: tank_speed
+  engineClutchParam: koppeling
+  ambienceSpeedParam: tank_speed
 --- !u!114 &114605941353645218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -272,10 +294,10 @@ MonoBehaviour:
   - -2
   - 0
   - 2
-  - 3
   - 4
-  - 5
   - 6
+  - 8
+  - 10
   accelerationPeriod:
   - 1
   - 1
