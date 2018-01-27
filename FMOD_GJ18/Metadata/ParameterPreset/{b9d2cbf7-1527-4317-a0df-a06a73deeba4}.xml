@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{b9d2cbf7-1527-4317-a0df-a06a73deeba4}">
+        <property name="name">
+            <value>tankhead_movement</value>
+        </property>
+        <relationship name="folder">
+            <destination>{bda72f6e-b669-4afa-acde-024e70b1549c}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{f32a1975-e477-460f-bbbf-3f47791c52ef}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{f32a1975-e477-460f-bbbf-3f47791c52ef}">
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+        <property name="seekSpeed">
+            <value>0.86000007390975952</value>
+        </property>
+    </object>
+</objects>

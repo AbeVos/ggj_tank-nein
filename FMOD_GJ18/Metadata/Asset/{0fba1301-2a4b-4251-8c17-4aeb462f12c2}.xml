@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="EncodableAsset" id="{0fba1301-2a4b-4251-8c17-4aeb462f12c2}">
+        <property name="assetPath">
+            <value>Tank_movement/</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{8f0ed7f5-d3e9-4f5e-8f68-21dc68cfb3a2}</destination>
+        </relationship>
+    </object>
+</objects>
