@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-class StateManager : MonoBehaviour
+public class StateManager : MonoBehaviour
 {
     public static StateManager instance = null;
     public enum gameState
@@ -13,13 +14,17 @@ class StateManager : MonoBehaviour
         Outro
     };
 
+    public delegate void OnStateSwitchEvent(gameState newState, gameState oldState);
+    /// <summary>Occurs on state switch, do not use SetState in this.</summary>
+    public event OnStateSwitchEvent OnStateSwitched;
+
     public gameState currentState { get; private set; }
     public gameState previousState { get; private set; }
 
     public void Awake()
     {
-        if (instance == null) instance = this;
-        else if (instance != this) Destroy(gameObject);
+        MainManager.Manager.State = this;
+        UIManager.Manager.UI = GetComponentInChildren<Canvas>();
     }
 
     public void SwitchState(gameState targetState)
@@ -28,6 +33,11 @@ class StateManager : MonoBehaviour
         previousState = currentState;
         currentState = targetState;
         ActionOnSwitch(currentState);
+
+        if (OnStateSwitched != null)
+        {
+            OnStateSwitched(currentState, previousState);
+        }
     }
 
     private void ActionOnSwitch(gameState state)
