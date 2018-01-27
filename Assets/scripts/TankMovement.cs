@@ -28,21 +28,23 @@ public class TankMovement : MonoBehaviour
     private int previousForwardInput;
     private int currentForwardInput;
     private int currentSidewaysInput;
+    public float acceleration;
 
     [SerializeField] private Image currentGearCursor;
     [SerializeField] private Image requiredGearCursor;
     [SerializeField] private Transform[] GearCursorPositions;
 
-    [SerializeField] private Transform rpmPivot;
+    [SerializeField] private RectTransform rpmPivot;
 
     [SerializeField] private float[] maxAcceleration;
     [SerializeField] private float[] accelerationPeriod;
 
     [SerializeField] private float angularVelocity;
+    [SerializeField] private float maxRpm = 5f;
     [Range(0, 1)] [SerializeField] private float friction;
 
 
-    private float buttonPressMomentum; // liniar momentum, we're just bullshiting this.... don't ask :D
+    private float rPM;
 
 
     private void Awake()
@@ -58,6 +60,21 @@ public class TankMovement : MonoBehaviour
         ForwardMovement();
         Rotation();
         HandleCoupling();
+
+        if (currentForwardInput < 0)
+        {
+            if (rPM >= Mathf.Abs(accelerationPeriod[(int)currentGear]) && (int)currentGear < (int)Gear.GearFive)
+            {
+                requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear + 1].position;
+            }
+        }
+        else
+        {
+            if (rPM <= Mathf.Abs(accelerationPeriod[(int)currentGear - 1]) && (int)currentGear > (int)Gear.GearOne)
+            {
+                requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear - 1].position;
+            }
+        }
     }
 
     private void ForwardMovement()
@@ -66,9 +83,7 @@ public class TankMovement : MonoBehaviour
 
         if (currentGear == Gear.Reverse) HandleForwardInput(1);
         else if ((int)currentGear > 1) HandleForwardInput(-1);
-
-        buttonPressMomentum = Mathf.Clamp(buttonPressMomentum, 0, accelerationPeriod[(int)currentGear]);
-        float acceleration = RPM(buttonPressMomentum);
+        acceleration = Acceleration(rPM);
         Vector3 velocity = friction * controller.velocity + acceleration * transform.forward;
 
         controller.SimpleMove(velocity);
@@ -76,13 +91,27 @@ public class TankMovement : MonoBehaviour
 
     private void HandleForwardInput(int input)
     {
-        if (currentForwardInput == input) buttonPressMomentum += Time.deltaTime;
-        else buttonPressMomentum -= Time.deltaTime;
+        if (currentForwardInput == input)
+        {
+            rPM += Time.deltaTime;
+
+        }
+        else rPM -= Time.deltaTime;
+
+        RotateRpmMeter();
     }
 
-    private float RPM(float buttonPressDuration)
+    private void RotateRpmMeter()
     {
-        return 0.5f * maxAcceleration[(int)currentGear] * (Mathf.Cos(Mathf.PI * buttonPressDuration / accelerationPeriod[(int)currentGear]) - 1);
+        rPM = Mathf.Clamp(rPM, 0, maxRpm);
+        float angle = -(125f / maxRpm) * rPM + 30;
+        rpmPivot.eulerAngles = Vector3.forward * angle;
+    }
+
+    private float Acceleration(float rPM)
+    {
+        float rpm = Mathf.Min(rPM, accelerationPeriod[(int)currentGear]);
+        return 0.5f * maxAcceleration[(int)currentGear] * (Mathf.Cos(Mathf.PI * rpm / accelerationPeriod[(int)currentGear]) - 1);
     }
 
     private void Rotation()

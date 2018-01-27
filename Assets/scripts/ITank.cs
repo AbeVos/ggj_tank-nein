@@ -10,7 +10,9 @@ public enum Ammo
 
 public interface ITank
 {
+	Ammo CurrentAmmo { get; }
 	Ammo Weakness { get; }
+	bool Destroyed { get; }
 
 	bool Hit(Ammo ammoType);
 }
