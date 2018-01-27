@@ -23,6 +23,7 @@ public class TankMovement : MonoBehaviour
     private Gear currentGear;
 
     private bool isCoupled;
+    private bool engineStopped;
 
     private int requiredGear;
     private int previousForwardInput;
@@ -67,12 +68,21 @@ public class TankMovement : MonoBehaviour
             {
                 requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear + 1].position;
             }
+            if (rPM >= maxRpm - 0.1f)
+            {
+                StopEngine();
+            }
         }
         else
         {
             if (rPM <= Mathf.Abs(accelerationPeriod[(int)currentGear - 1]) && (int)currentGear > (int)Gear.GearOne)
             {
                 requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear - 1].position;
+            }
+
+            if (rPM <= 0.1f && (int)currentGear > (int)Gear.Free)
+            {
+                StopEngine();
             }
         }
     }
@@ -139,5 +149,16 @@ public class TankMovement : MonoBehaviour
                 currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
             }
         }
+    }
+
+    private void StopEngine()
+    {
+        engineStopped = true;
+
+    }
+
+    public void StartEngine()
+    {
+        engineStopped = false;
     }
 }
