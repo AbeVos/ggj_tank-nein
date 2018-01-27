@@ -34,33 +34,57 @@ public class TankMovement : MonoBehaviour
 
     void Update()
     {
-        currentForwardDirection = (int)Input.GetAxis("Controlpad Vertical");
-        currentSidewaysDirection = (int)Input.GetAxis("Controlpad Horizontal");
-
-        float rotation = 1f / (controller.velocity.magnitude + 1) * angularVelocity * currentSidewaysDirection;
-
-        VerticalMovement();
-        controller.transform.eulerAngles += rotation * transform.up;
-
+        ForwardMovement();
+        Rotation();
+        HandleCoupling();
     }
 
-    private void VerticalMovement()
+    private void ForwardMovement()
     {
+        currentForwardDirection = (int)Input.GetAxis("Controlpad Vertical");
 
         if (currentForwardDirection != 0) buttonPressMomentum += Time.deltaTime;
-        else buttonPressMomentum -= Time.deltaTime;
+        else
+        {
+            buttonPressMomentum -= Time.deltaTime;
+            currentForwardDirection = 1;
+        }
 
         buttonPressMomentum = Mathf.Clamp(buttonPressMomentum, 0, accelerationPeriod[currentGear]);
-        Vector3 forward = transform.forward;
+        Vector3 forward = currentForwardDirection * transform.forward;
         float acceleration = RPM(buttonPressMomentum);
         float magnitude = Mathf.Lerp(acceleration, controller.velocity.magnitude, Time.deltaTime);
 
         controller.SimpleMove(magnitude * forward);
     }
 
-
     private float RPM(float buttonPressDuration)
     {
         return 0.5f * maxAcceleration[currentGear] * (Mathf.Cos(Mathf.PI * buttonPressDuration / accelerationPeriod[currentGear]) - 1);
+    }
+
+    private void Rotation()
+    {
+        currentSidewaysDirection = (int)Input.GetAxis("Controlpad Horizontal");
+        float rotation = 1f / (controller.velocity.magnitude + 1) * angularVelocity * currentSidewaysDirection;
+        controller.transform.eulerAngles += rotation * transform.up;
+    }
+
+    private void HandleCoupling()
+    {
+        if (Input.GetButtonDown("R Button")) isCoupled = true;
+        else if (Input.GetButtonDown("R Button")) isCoupled = false;
+
+        if (isCoupled)
+        {
+            if (Input.GetButtonDown("B Button"))
+            {
+                currentGear++;
+            }
+            else if (Input.GetButtonDown("B Button"))
+            {
+                currentGear--;
+            }
+        }
     }
 }
