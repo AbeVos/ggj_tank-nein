@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{75b64395-42fa-4b0a-811d-e0de2455a3a4}">
+        <property name="assetPath">
+            <value>Music/tention_04.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>2.8235416666666668</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{8f0ed7f5-d3e9-4f5e-8f68-21dc68cfb3a2}</destination>
+        </relationship>
+    </object>
+</objects>

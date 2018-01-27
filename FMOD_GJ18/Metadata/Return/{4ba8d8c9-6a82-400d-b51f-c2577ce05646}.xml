@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="MixerReturn" id="{4ba8d8c9-6a82-400d-b51f-c2577ce05646}">
+        <property name="overridingInputFormat">
+            <value>2</value>
+        </property>
+        <property name="inputFormatOverridden">
+            <value>true</value>
+        </property>
+        <property name="name">
+            <value>Reverb</value>
+        </property>
+        <relationship name="effectChain">
+            <destination>{e902e8c5-0747-4fe2-9761-634c6f1bd5a8}</destination>
+        </relationship>
+        <relationship name="panner">
+            <destination>{921e25d3-967a-434a-8bbd-86bdc71e7a10}</destination>
+        </relationship>
+        <relationship name="output">
+            <destination>{a50a58ef-a9b1-4b6a-8bcf-3abf7ff0497a}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusEffectChain" id="{e902e8c5-0747-4fe2-9761-634c6f1bd5a8}">
+        <relationship name="effects">
+            <destination>{51b14a0f-5a48-4f32-b25c-5b8430d95cae}</destination>
+            <destination>{5c9720e6-c5b5-4ded-ae07-ed18ab54f48a}</destination>
+        </relationship>
+    </object>
+    <object class="MixerBusPanner" id="{921e25d3-967a-434a-8bbd-86bdc71e7a10}"/>
+    <object class="SFXReverbEffect" id="{51b14a0f-5a48-4f32-b25c-5b8430d95cae}">
+        <property name="decayTime">
+            <value>1400</value>
+        </property>
+        <property name="earlyDelay">
+            <value>14</value>
+        </property>
+        <property name="lateDelay">
+            <value>21</value>
+        </property>
+        <property name="HFDecayRatio">
+            <value>14</value>
+        </property>
+        <property name="diffusion">
+            <value>80</value>
+        </property>
+        <property name="density">
+            <value>60</value>
+        </property>
+        <property name="highCut">
+            <value>3400</value>
+        </property>
+        <property name="earlyLateMix">
+            <value>66</value>
+        </property>
+        <property name="wetLevel">
+            <value>1.20000005</value>
+        </property>
+        <property name="dryLevel">
+            <value>-80</value>
+        </property>
+    </object>
+    <object class="MixerBusFader" id="{5c9720e6-c5b5-4ded-ae07-ed18ab54f48a}"/>
+</objects>

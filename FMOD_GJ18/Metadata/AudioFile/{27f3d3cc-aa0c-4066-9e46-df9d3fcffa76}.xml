@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{27f3d3cc-aa0c-4066-9e46-df9d3fcffa76}">
+        <property name="assetPath">
+            <value>Tank_ambience/Tank_scatter_14.wav</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.7731874999999999</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{8f0ed7f5-d3e9-4f5e-8f68-21dc68cfb3a2}</destination>
+        </relationship>
+    </object>
+</objects>
