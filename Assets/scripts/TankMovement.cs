@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TankMovement : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class TankMovement : MonoBehaviour
     private int previousForwardInput;
     private int currentForwardInput;
     private int currentSidewaysInput;
+
+    [SerializeField] private Image currentGearCursor;
+    [SerializeField] private Image requiredGearCursor;
+    [SerializeField] private Transform[] GearCursorPositions;
 
     [SerializeField] private float[] maxAcceleration;
     [SerializeField] private float[] accelerationPeriod;
@@ -95,12 +100,12 @@ public class TankMovement : MonoBehaviour
             if (Input.GetButtonDown("A Button") && (int)currentGear < maxAcceleration.Length - 1)
             {
                 currentGear++;
-                Debug.Log("Changed gear to " + currentGear);
+                currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
             }
             else if (Input.GetButtonDown("B Button") && (int)currentGear > 0)
             {
                 currentGear--;
-                Debug.Log("Changed gear to " + currentGear);
+                currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
             }
         }
     }
