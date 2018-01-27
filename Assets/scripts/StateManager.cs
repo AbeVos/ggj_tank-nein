@@ -21,10 +21,15 @@ public class StateManager : MonoBehaviour
     public gameState currentState { get; private set; }
     public gameState previousState { get; private set; }
 
-    public void Awake()
+    protected void Awake()
     {
         MainManager.Manager.State = this;
         UIManager.Manager.UI = GetComponentInChildren<Canvas>();
+    }
+
+    protected void Start()
+    {
+        MainManager.Manager.State.SwitchState(gameState.Playing);
     }
 
     public void SwitchState(gameState targetState)
