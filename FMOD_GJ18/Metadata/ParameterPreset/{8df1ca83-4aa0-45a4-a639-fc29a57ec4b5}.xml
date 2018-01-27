@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{8df1ca83-4aa0-45a4-a639-fc29a57ec4b5}">
+        <property name="name">
+            <value>Tank_braking</value>
+        </property>
+        <relationship name="folder">
+            <destination>{bda72f6e-b669-4afa-acde-024e70b1549c}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{fc1fb0de-0b2d-4e1b-8699-028217e01c7f}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{fc1fb0de-0b2d-4e1b-8699-028217e01c7f}">
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+        <property name="seekSpeed">
+            <value>0.86000007390975952</value>
+        </property>
+    </object>
+</objects>

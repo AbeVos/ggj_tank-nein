@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{11ef34d5-e89b-4656-a267-163ee1ea11a0}">
+        <property name="name">
+            <value>tank_speed</value>
+        </property>
+        <relationship name="folder">
+            <destination>{bda72f6e-b669-4afa-acde-024e70b1549c}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{f47c82f0-1b69-40e5-a5e8-667eebc2e86d}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{f47c82f0-1b69-40e5-a5e8-667eebc2e86d}">
+        <property name="maximum">
+            <value>10</value>
+        </property>
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+        <property name="seekSpeed">
+            <value>2.9999997615814209</value>
+        </property>
+    </object>
+</objects>

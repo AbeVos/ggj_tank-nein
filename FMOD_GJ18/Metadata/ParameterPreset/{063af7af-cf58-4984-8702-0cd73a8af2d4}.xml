@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{063af7af-cf58-4984-8702-0cd73a8af2d4}">
+        <property name="name">
+            <value>Tank_leftright</value>
+        </property>
+        <relationship name="folder">
+            <destination>{bda72f6e-b669-4afa-acde-024e70b1549c}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{1f18fee9-f06d-4204-a46a-d34234701991}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{1f18fee9-f06d-4204-a46a-d34234701991}">
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+        <property name="seekSpeed">
+            <value>0.5700000524520874</value>
+        </property>
+    </object>
+</objects>
