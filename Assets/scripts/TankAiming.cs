@@ -8,6 +8,7 @@ public class TankAiming : MonoBehaviour
     [SerializeField] private float turretTiltSpeed = 1f;
 
     [SerializeField] private Ammo currentAmmoType = Ammo.Laser;
+    [SerializeField] private TankAudioController audioController;
 
     private Transform parent;
     private Transform cannon;
@@ -73,6 +74,8 @@ public class TankAiming : MonoBehaviour
 
         transform.eulerAngles += Time.deltaTime * turretPanSpeed * xAxis * parent.up;
         cannon.localEulerAngles += Time.deltaTime * turretTiltSpeed * yAxis * Vector3.right;
+
+        audioController.TurretValue = new Vector2(turretPanSpeed * xAxis, turretTiltSpeed * yAxis).magnitude;
     }
 
     private void AutoMoveTurret()

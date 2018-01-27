@@ -102,7 +102,8 @@ public class ConsoleMiniGame : MonoBehaviour
         else
         {
             canOpenConsole = false;
-            backgroundImage.CrossFadeColor(new Color(0.3f,1f, 0.3f), 1f, false);
+            //backgroundImage.CrossFadeColor(new Color(0.3f,1f, 0.3f), 1f, false);
+            consoleBackground.GetComponent<Image>().color = new Color(0.3f,1f, 0.3f);
             FMODUnity.RuntimeManager.PlayOneShot(codeRightEvent, transform.position);
             ApplyCode(foundCode);
         }
