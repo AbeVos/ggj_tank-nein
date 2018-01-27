@@ -26,8 +26,7 @@ public class TankMovement : MonoBehaviour
     private int requiredGear;
     private int previousForwardInput;
     private int currentForwardInput;
-    private int currentSidewaysDirection;
-    [SerializeField] private int maxrPM;
+    private int currentSidewaysInput;
 
     [SerializeField] private float[] maxAcceleration;
     [SerializeField] private float[] accelerationPeriod;
@@ -57,36 +56,21 @@ public class TankMovement : MonoBehaviour
     private void ForwardMovement()
     {
         currentForwardInput = (int)Input.GetAxis("Controlpad Vertical");
-        Vector3 forward = transform.forward;
 
-        if (currentGear == Gear.Reverse)
-        {
-            if (currentForwardInput == 1)
-            {
-                buttonPressMomentum += Time.deltaTime;
-            }
-            else
-            {
-                buttonPressMomentum -= Time.deltaTime;
-            }
-        }
-        else if ((int)currentGear > 1)
-        {
-            if (currentForwardInput == -1)
-            {
-                buttonPressMomentum += Time.deltaTime;
-            }
-            else
-            {
-                buttonPressMomentum -= Time.deltaTime;
-            }
-        }
+        if (currentGear == Gear.Reverse) HandleForwardInput(1);
+        else if ((int)currentGear > 1) HandleForwardInput(-1);
 
         buttonPressMomentum = Mathf.Clamp(buttonPressMomentum, 0, accelerationPeriod[(int)currentGear]);
         float acceleration = RPM(buttonPressMomentum);
-        Vector3 velocity = friction * controller.velocity + acceleration * forward;
+        Vector3 velocity = friction * controller.velocity + acceleration * transform.forward;
 
         controller.SimpleMove(velocity);
+    }
+
+    private void HandleForwardInput(int input)
+    {
+        if (currentForwardInput == input) buttonPressMomentum += Time.deltaTime;
+        else buttonPressMomentum -= Time.deltaTime;
     }
 
     private float RPM(float buttonPressDuration)
@@ -96,8 +80,8 @@ public class TankMovement : MonoBehaviour
 
     private void Rotation()
     {
-        currentSidewaysDirection = (int)Input.GetAxis("Controlpad Horizontal");
-        float rotation = -1f / (controller.velocity.magnitude + 1) * angularVelocity * currentSidewaysDirection;
+        currentSidewaysInput = (int)Input.GetAxis("Controlpad Horizontal");
+        float rotation = -1f / (controller.velocity.magnitude + 1) * angularVelocity * currentSidewaysInput;
         controller.transform.eulerAngles += rotation * transform.up;
     }
 

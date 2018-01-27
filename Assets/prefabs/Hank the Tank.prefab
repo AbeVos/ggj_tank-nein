@@ -273,8 +273,8 @@ MonoBehaviour:
   - 3
   - 4
   - 6
-  angularVelocity: 1
-  friction: 0.321
+  angularVelocity: 2
+  friction: 0.3
 --- !u!124 &124108908883993496
 Behaviour:
   m_ObjectHideFlags: 1
