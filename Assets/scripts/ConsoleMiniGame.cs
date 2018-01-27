@@ -5,25 +5,34 @@ using UnityEngine.UI;
 
 public class ConsoleMiniGame : MonoBehaviour
 {
+    #if true
     [SerializeField] private List<cControlObject.cControlObjectsState> codeToCheck = new List<cControlObject.cControlObjectsState>();
     [SerializeField] private cControlObject[] cControlObjects = new cControlObject[6];
     [SerializeField] private GameObject consoleBackground;
     [SerializeField] private Code[] Codes;
     [SerializeField] private MotorCode[] engineCodes;
 
+    [SerializeField, FMODUnity.EventRef] private string buttonPressEvent;
+	[SerializeField, FMODUnity.EventRef] private string codeTypeEvent;
+	[SerializeField, FMODUnity.EventRef] private string codeRightEvent;
+	[SerializeField, FMODUnity.EventRef] private string CodeWrongEvent;
+
     private bool canOpenConsole = true;
     private bool consoleIsVisible;
     private bool correctCode = false;
     private int currentcControlObjectIndex = 0;
+    private Image backgroundImage;
 
     void Awake()
     {
         consoleIsVisible = false;
-        consoleBackground.SetActive(false);
+        backgroundImage = consoleBackground.GetComponent<Image>();
+        backgroundImage.color = new Color(1,1,1,0);
     }
 
     void Update()
     {
+        if (!canOpenConsole) {return;}
         ToggleConsoleVisibility();
 
         if (consoleIsVisible && currentcControlObjectIndex < 6)
@@ -40,14 +49,16 @@ public class ConsoleMiniGame : MonoBehaviour
         cControlObjects[currentcControlObjectIndex].SetState(newState);
         codeToCheck.Add(newState);
         currentcControlObjectIndex++;
+        FMODUnity.RuntimeManager.PlayOneShot(codeTypeEvent, transform.position);
     }
 
     private void ToggleConsoleVisibility()
     {
-        if (Input.GetButtonDown("Start Button") && canOpenConsole) 
+        if (Input.GetButtonDown("Start Button")) 
         {
             consoleIsVisible = true;
-            consoleBackground.SetActive(true);
+            backgroundImage.CrossFadeAlpha(1.0f,0.2f,false);
+            FMODUnity.RuntimeManager.PlayOneShot(buttonPressEvent, transform.position);
         }
         else if (Input.GetButtonUp("Start Button"))
         {
@@ -86,15 +97,16 @@ public class ConsoleMiniGame : MonoBehaviour
         {
             canOpenConsole = false;
             consoleBackground.GetComponent<Image>().color = new Color(1f,0.2f, 0.2f);
+            FMODUnity.RuntimeManager.PlayOneShot(CodeWrongEvent, transform.position);
         }
         else
         {
             canOpenConsole = false;
-            consoleBackground.GetComponent<Image>().color = new Color(0.3f,1f, 0.3f);
+            backgroundImage.CrossFadeColor(new Color(0.3f,1f, 0.3f), 1f, false);
+            FMODUnity.RuntimeManager.PlayOneShot(codeRightEvent, transform.position);
             ApplyCode(foundCode);
         }
-        // event FMOD
-        Invoke("ResetCode", 0.4f);
+        Invoke("ResetCode", 1f);
     }
 
     private void ApplyCode(Code foundCode)
@@ -118,7 +130,7 @@ public class ConsoleMiniGame : MonoBehaviour
         foreach (var cControlObject in cControlObjects)
         {
             consoleIsVisible = false;
-            consoleBackground.SetActive(false);
+            consoleBackground.GetComponent<Image>().CrossFadeAlpha(0.0f,0.4f,false);
             currentcControlObjectIndex = 0;
             cControlObject.SetState(cControlObject.cControlObjectsState.Empty);
             codeToCheck.Clear();
@@ -127,4 +139,5 @@ public class ConsoleMiniGame : MonoBehaviour
             canOpenConsole  = true;
         }
     }
+    #endif
 }
