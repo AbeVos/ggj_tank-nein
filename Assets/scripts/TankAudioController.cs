@@ -13,6 +13,7 @@ public class TankAudioController : MonoBehaviour
 	[SerializeField, FMODUnity.EventRef] private string brakeInstanceEvent;
 	[SerializeField, FMODUnity.EventRef] private string engineEvent;
 	[SerializeField, FMODUnity.EventRef] private string ambienceEvent;
+	[SerializeField, FMODUnity.EventRef] private string clutchOneShotEvent;	
 	
 	[SerializeField] private string brakeParam;
 	[SerializeField] private string engineSpeedParam;
@@ -22,7 +23,6 @@ public class TankAudioController : MonoBehaviour
 	private EventInstance brakeInstance;
 	private EventInstance ambienceInstance;
 	private EventInstance engineInstance;
-	private EventInstance brakeOneshotInstance;
 
 	private ParameterInstance paramTankEngineSpeed;
 	private ParameterInstance paramTankEngineClutch;
@@ -52,7 +52,8 @@ public class TankAudioController : MonoBehaviour
 	void Update () {
 
 		paramTankEngineSpeed.setValue(controller.velocity.magnitude);
-		paramAmbinceSpeed.setValue(controller.velocity.magnitude);
+		paramAmbinceSpeed.setValue(Mathf.Clamp(controller.velocity.magnitude, 0.25f, 1f));
+		//Debug.Log(controller.velocity.magnitude);
 
 		if (Input.GetButtonDown("L Button")){
 			paramBrake.setValue(1f);
@@ -60,6 +61,17 @@ public class TankAudioController : MonoBehaviour
 		}
 		if (Input.GetButtonUp("L Button")){
 			paramBrake.setValue(0);
+		}
+		if (Input.GetButtonDown("R Button")){
+			paramTankEngineClutch.setValue(1f);
+		}
+		if (Input.GetButtonUp("R Button")){
+			paramTankEngineClutch.setValue(0);
+		}
+
+		if(Input.GetButton("R Button") && (Input.GetButtonDown("A Button") || Input.GetButtonDown("B Button")))
+		{
+			FMODUnity.RuntimeManager.PlayOneShot(clutchOneShotEvent, transform.position);
 		}
 	}
 	#endif
