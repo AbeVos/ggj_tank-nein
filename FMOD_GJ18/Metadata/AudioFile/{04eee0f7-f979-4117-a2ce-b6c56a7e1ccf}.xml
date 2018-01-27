@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="AudioFile" id="{04eee0f7-f979-4117-a2ce-b6c56a7e1ccf}">
         <property name="assetPath">
-            <value>Redbutton_fout.wav</value>
+            <value>Tank_UI/Redbutton_fout.wav</value>
         </property>
         <property name="frequencyInKHz">
             <value>48</value>
