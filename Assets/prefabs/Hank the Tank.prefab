@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 33935492666571608}
   - component: {fileID: 135764360794086550}
   - component: {fileID: 23728280839073160}
+  - component: {fileID: 114785517615963814}
   m_Layer: 0
   m_Name: HanksGezicht
   m_TagString: Untagged
@@ -139,6 +140,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 1
   m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -255,7 +257,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59572eb6ed854f048bad2d05498c1fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxrPM: 0
+  currentGearCursor: {fileID: 0}
+  requiredGearCursor: {fileID: 0}
+  GearCursorPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rpmPivot: {fileID: 0}
   maxAcceleration:
   - -2
   - 0
@@ -274,6 +286,19 @@ MonoBehaviour:
   - 6
   angularVelocity: 2
   friction: 0.3
+--- !u!114 &114785517615963814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939189534218202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71533ed09007642f5bbc56272fe88367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretPanSpeed: 25
+  turretTiltSpeed: 25
 --- !u!124 &124108908883993496
 Behaviour:
   m_ObjectHideFlags: 1

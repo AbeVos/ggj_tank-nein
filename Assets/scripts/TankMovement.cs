@@ -33,6 +33,8 @@ public class TankMovement : MonoBehaviour
     [SerializeField] private Image requiredGearCursor;
     [SerializeField] private Transform[] GearCursorPositions;
 
+    [SerializeField] private Transform rpmPivot;
+
     [SerializeField] private float[] maxAcceleration;
     [SerializeField] private float[] accelerationPeriod;
 
