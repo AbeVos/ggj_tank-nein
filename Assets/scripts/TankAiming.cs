@@ -6,11 +6,16 @@ public class TankAiming : MonoBehaviour
 {
     [SerializeField] private float turretPanSpeed = 1f;
     [SerializeField] private float turretTiltSpeed = 1f;
-    
+
     private Transform parent;
     private Transform cannon;
 
     private Ammo currentAmmoType;
+
+    public Ammo CurrentAmmoType
+    {
+        set { currentAmmoType = value; }
+    }
 
     private bool lockedOn;
     private Transform lockTarget;
@@ -24,9 +29,11 @@ public class TankAiming : MonoBehaviour
 
         lockedOn = false;
         lockTarget = null;
+
+        MainManager.Manager.TankTurret = this;
     }
 
-	protected void Update()
+    protected void Update()
     {
         if (!lockedOn)
         {
@@ -45,8 +52,6 @@ public class TankAiming : MonoBehaviour
 
             if (Physics.Raycast(cannon.position, cannon.forward, out hit, Mathf.Infinity, mask))
             {
-                Debug.Log(hit.collider.name);
-
                 // Check if target is a Tank
                 ITank target = hit.collider.GetComponent<ITank>();
 
