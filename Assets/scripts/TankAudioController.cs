@@ -14,6 +14,8 @@ public class TankAudioController : MonoBehaviour
 	[SerializeField, FMODUnity.EventRef] private string engineEvent;
 	[SerializeField, FMODUnity.EventRef] private string ambienceEvent;
 	[SerializeField, FMODUnity.EventRef] private string clutchOneShotEvent;	
+	[SerializeField, FMODUnity.EventRef] private string gearshiftOneShotEvent;	
+	
 	
 	[SerializeField] private string brakeParam;
 	[SerializeField] private string engineSpeedParam;
@@ -39,7 +41,6 @@ public class TankAudioController : MonoBehaviour
 		engineInstance.getParameter(engineClutchParam, out paramTankEngineClutch);
 		ambienceInstance.getParameter(ambienceSpeedParam, out paramAmbinceSpeed);
 
-
 		brakeInstance.start();
 		ambienceInstance.start();
 		engineInstance.start();
@@ -64,9 +65,12 @@ public class TankAudioController : MonoBehaviour
 		}
 		if (Input.GetButtonDown("R Button")){
 			paramTankEngineClutch.setValue(1f);
+			FMODUnity.RuntimeManager.PlayOneShot(gearshiftOneShotEvent, transform.position);
+			
 		}
 		if (Input.GetButtonUp("R Button")){
 			paramTankEngineClutch.setValue(0);
+			FMODUnity.RuntimeManager.PlayOneShot(gearshiftOneShotEvent, transform.position);
 		}
 
 		if(Input.GetButton("R Button") && (Input.GetButtonDown("A Button") || Input.GetButtonDown("B Button")))

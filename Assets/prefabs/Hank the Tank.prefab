@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 20214702343466936}
   - component: {fileID: 124108908883993496}
   - component: {fileID: 81289463382726984}
+  - component: {fileID: 114871125649283286}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -261,9 +262,11 @@ MonoBehaviour:
   brakeInstanceEvent: event:/Tank_Braking_loop
   engineEvent: event:/Tank_Engine_01
   ambienceEvent: event:/Tank_Ambience_01
+  clutchOneShotEvent: event:/Tank_koppeling
+  gearshiftOneShotEvent: event:/Tank_Gearshift
   brakeParam: Tank_braking
   engineSpeedParam: tank_speed
-  engineClutchParam: 
+  engineClutchParam: koppeling
   ambienceSpeedParam: tank_speed
 --- !u!114 &114605941353645218
 MonoBehaviour:
@@ -294,6 +297,18 @@ MonoBehaviour:
   - 6
   angularVelocity: 2
   friction: 0.3
+--- !u!114 &114871125649283286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413648163959264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
 --- !u!124 &124108908883993496
 Behaviour:
   m_ObjectHideFlags: 1
