@@ -53,7 +53,7 @@ public class TankAudioController : MonoBehaviour
 	void Update () {
 
 		paramTankEngineSpeed.setValue(controller.velocity.magnitude);
-		paramAmbinceSpeed.setValue(Mathf.Clamp(controller.velocity.magnitude, 0.25f, 1f));
+		paramAmbinceSpeed.setValue(Mathf.Clamp(controller.velocity.magnitude, 0.25f, 10f));
 		//Debug.Log(controller.velocity.magnitude);
 
 		if (Input.GetButtonDown("L Button")){
