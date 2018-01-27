@@ -11,6 +11,7 @@ public class ConsoleMiniGame : MonoBehaviour
     [SerializeField] private Code[] Codes;
     [SerializeField] private MotorCode[] engineCodes;
 
+    private bool canOpenConsole = true;
     private bool consoleIsVisible;
     private bool correctCode = false;
     private int currentcControlObjectIndex = 0;
@@ -43,7 +44,7 @@ public class ConsoleMiniGame : MonoBehaviour
 
     private void ToggleConsoleVisibility()
     {
-        if (Input.GetButtonDown("Start Button"))
+        if (Input.GetButtonDown("Start Button") && canOpenConsole) 
         {
             consoleIsVisible = true;
             consoleBackground.SetActive(true);
@@ -83,13 +84,17 @@ public class ConsoleMiniGame : MonoBehaviour
         }
         if (!correctCode)
         {
-            Debug.Log("FOUT");
+            canOpenConsole = false;
+            consoleBackground.GetComponent<Image>().color = new Color(1f,0.2f, 0.2f);
         }
         else
         {
+            canOpenConsole = false;
+            consoleBackground.GetComponent<Image>().color = new Color(0.3f,1f, 0.3f);
             ApplyCode(foundCode);
         }
-        ResetCode();
+        // event FMOD
+        Invoke("ResetCode", 0.4f);
     }
 
     private void ApplyCode(Code foundCode)
@@ -118,6 +123,8 @@ public class ConsoleMiniGame : MonoBehaviour
             cControlObject.SetState(cControlObject.cControlObjectsState.Empty);
             codeToCheck.Clear();
             correctCode = false;
+            consoleBackground.GetComponent<Image>().color = Color.white;
+            canOpenConsole  = true;
         }
     }
 }
