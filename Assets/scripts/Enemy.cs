@@ -14,12 +14,26 @@ public class Enemy : MonoBehaviour, ITank
 		Destroyed
 	}
 
+	[SerializeField] protected float detectionDistance = 10f;
+	[SerializeField] protected float reloadTime = 10f;
+
 	protected State currentState = State.Inactive;
 	protected Transform turret;
+	protected float time = 0f;
+
+	public Ammo CurrentAmmo
+	{
+		get { return Ammo.Laser; }
+	}
 
 	public Ammo Weakness
 	{
 		get { return Ammo.Rocket; }
+	}
+
+	public bool Destroyed
+	{
+		get { return currentState == State.Destroyed; }
 	}
 
 	protected void Awake()
@@ -29,6 +43,7 @@ public class Enemy : MonoBehaviour, ITank
 
 	protected virtual void Start()
 	{
+		Debug.Log("Subscribe");
 		MainManager.Manager.State.OnStateSwitched += OnLevelStateChanged;
 	}
 
@@ -39,6 +54,7 @@ public class Enemy : MonoBehaviour, ITank
 
 	protected void OnLevelStateChanged(StateManager.gameState newState, StateManager.gameState oldState)
 	{
+		Debug.Log(newState);
 		if (newState == StateManager.gameState.Playing)
 		{
 			SetState(State.Idle);
@@ -49,6 +65,7 @@ public class Enemy : MonoBehaviour, ITank
 	{
 		if (ammoType == Weakness)
 		{
+			SetState(State.Destroyed);
 			return true;
 		}
 
@@ -59,5 +76,7 @@ public class Enemy : MonoBehaviour, ITank
 	{
 		State oldState = currentState;
 		currentState = newState;
+
+		time = 0f;
 	}
 }

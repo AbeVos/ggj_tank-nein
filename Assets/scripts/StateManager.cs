@@ -27,9 +27,10 @@ public class StateManager : MonoBehaviour
         UIManager.Manager.UI = GetComponentInChildren<Canvas>();
     }
 
-    protected void Start()
+    protected void Update()
     {
-        MainManager.Manager.State.SwitchState(gameState.Playing);
+        if (currentState != gameState.Playing)
+            MainManager.Manager.State.SwitchState(gameState.Playing);
     }
 
     public void SwitchState(gameState targetState)

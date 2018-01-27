@@ -2,15 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankArmor : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
+public class TankArmor : MonoBehaviour, ITank
+{
+	public Ammo CurrentAmmo
+	{
+		get { return Ammo.Laser; }
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public Ammo Weakness
+	{
+		get { return Ammo.Rocket; }
+	}
+
+	public bool Destroyed
+	{
+		get { return false; }
+	}
+
+	protected void Awake()
+	{
+		MainManager.Manager.TankHull = this;
+	}
+
+	public bool Hit(Ammo ammoType)
+	{
+		if (ammoType == Weakness)
+		{
+			return true;
+		}
+
+		return false;
 	}
 }

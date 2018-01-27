@@ -25,7 +25,7 @@ public class TankAiming : MonoBehaviour
         parent = transform.parent;
         cannon = transform.GetChild(0);
 
-        currentAmmoType = Ammo.Laser;
+        currentAmmoType = Ammo.Rocket;
 
         lockedOn = false;
         lockTarget = null;
@@ -100,7 +100,13 @@ public class TankAiming : MonoBehaviour
         if (Physics.Raycast(cannon.position, cannon.forward, out hit, Mathf.Infinity, mask))
         {
             lockTarget = hit.transform.parent;
-            return true;
+
+            ITank tank = lockTarget.GetComponent<ITank>();
+
+            if (tank != null)
+            {
+                return true && !tank.Destroyed && currentAmmoType == tank.Weakness;
+            }
         }
 
         return false;

@@ -8,6 +8,7 @@ public class MainManager : MonoBehaviour
 	private StateManager _stateManager;
 
     public TankAiming TankTurret { get; set; }
+	public TankArmor TankHull { get; set; }
 
 	public static MainManager Manager
 	{
