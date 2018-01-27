@@ -8,11 +8,24 @@ public class TankMovement : MonoBehaviour
 {
     CharacterController controller;
 
+    private enum Gear
+    {
+        Reverse,
+        Free,
+        GearOne,
+        GearTwo,
+        GearThree,
+        GearFour,
+        GearFive
+    }
+
+    private Gear currentGear;
+
     private bool isCoupled;
 
-    private int currentGear;
-    private int previousDirection;
-    private int currentForwardDirection;
+    private int requiredGear;
+    private int previousForwardInput;
+    private int currentForwardInput;
     private int currentSidewaysDirection;
     [SerializeField] private int maxrPM;
 
@@ -20,6 +33,7 @@ public class TankMovement : MonoBehaviour
     [SerializeField] private float[] accelerationPeriod;
 
     [SerializeField] private float angularVelocity;
+    [Range(0, 1)] [SerializeField] private float friction;
 
 
     private float buttonPressMomentum; // liniar momentum, we're just bullshiting this.... don't ask :D
@@ -28,8 +42,8 @@ public class TankMovement : MonoBehaviour
     private void Awake()
     {
         controller = GetComponent<CharacterController>();
-        currentGear = (maxAcceleration.Length - 1) / 2 + 1;
-        currentForwardDirection = 0;
+        currentGear = Gear.Free;
+        currentForwardInput = 0;
         isCoupled = false;
     }
 
@@ -42,29 +56,42 @@ public class TankMovement : MonoBehaviour
 
     private void ForwardMovement()
     {
-        currentForwardDirection = (int)Input.GetAxis("Controlpad Vertical");
+        currentForwardInput = (int)Input.GetAxis("Controlpad Vertical");
+        Vector3 forward = transform.forward;
 
-        if (currentForwardDirection != 0)
+        if (currentGear == Gear.Reverse)
         {
-            buttonPressMomentum += Time.deltaTime;
-            previousDirection = currentForwardDirection;
+            if (currentForwardInput == 1)
+            {
+                buttonPressMomentum += Time.deltaTime;
+            }
+            else
+            {
+                buttonPressMomentum -= Time.deltaTime;
+            }
         }
-        else
+        else if ((int)currentGear > 1)
         {
-            buttonPressMomentum -= Time.deltaTime;
+            if (currentForwardInput == -1)
+            {
+                buttonPressMomentum += Time.deltaTime;
+            }
+            else
+            {
+                buttonPressMomentum -= Time.deltaTime;
+            }
         }
 
-        Vector3 forward = transform.forward * previousDirection;
-        buttonPressMomentum = Mathf.Clamp(buttonPressMomentum, 0, accelerationPeriod[currentGear]);
+        buttonPressMomentum = Mathf.Clamp(buttonPressMomentum, 0, accelerationPeriod[(int)currentGear]);
         float acceleration = RPM(buttonPressMomentum);
-        Vector3 velocity = 0.5f * controller.velocity + acceleration * forward;
+        Vector3 velocity = friction * controller.velocity + acceleration * forward;
 
         controller.SimpleMove(velocity);
     }
 
     private float RPM(float buttonPressDuration)
     {
-        return 0.5f * maxAcceleration[currentGear] * (Mathf.Cos(Mathf.PI * buttonPressDuration / accelerationPeriod[currentGear]) - 1);
+        return 0.5f * maxAcceleration[(int)currentGear] * (Mathf.Cos(Mathf.PI * buttonPressDuration / accelerationPeriod[(int)currentGear]) - 1);
     }
 
     private void Rotation()
@@ -77,17 +104,19 @@ public class TankMovement : MonoBehaviour
     private void HandleCoupling()
     {
         if (Input.GetButtonDown("R Button")) isCoupled = true;
-        else if (Input.GetButtonDown("R Button")) isCoupled = false;
+        else if (Input.GetButtonUp("R Button")) isCoupled = false;
 
         if (isCoupled)
         {
-            if (Input.GetButtonDown("B Button"))
+            if (Input.GetButtonDown("A Button") && (int)currentGear < maxAcceleration.Length - 1)
             {
                 currentGear++;
+                Debug.Log("Changed gear to " + currentGear);
             }
-            else if (Input.GetButtonDown("B Button"))
+            else if (Input.GetButtonDown("B Button") && (int)currentGear > 0)
             {
                 currentGear--;
+                Debug.Log("Changed gear to " + currentGear);
             }
         }
     }
