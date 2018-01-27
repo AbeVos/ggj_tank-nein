@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="ParameterPreset" id="{a49470bc-ade5-46dc-a436-4e9edf54bbba}">
+        <property name="name">
+            <value>koppeling</value>
+        </property>
+        <relationship name="folder">
+            <destination>{bda72f6e-b669-4afa-acde-024e70b1549c}</destination>
+        </relationship>
+        <relationship name="parameter">
+            <destination>{e4292159-c358-4096-aa83-9e65e71fe256}</destination>
+        </relationship>
+    </object>
+    <object class="GameParameter" id="{e4292159-c358-4096-aa83-9e65e71fe256}">
+        <property name="initialValue">
+            <value>0</value>
+        </property>
+        <property name="seekSpeed">
+            <value>1.4999998807907104</value>
+        </property>
+    </object>
+</objects>
