@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="AudioFile" id="{53a3b55d-3a1d-4783-a201-58882b481721}">
         <property name="assetPath">
-            <value>Bluezone-BC0197-falling-metal-debris-007.wav</value>
+            <value>Tank_damage/Bluezone-BC0197-falling-metal-debris-007.wav</value>
         </property>
         <property name="frequencyInKHz">
             <value>44.0999985</value>
