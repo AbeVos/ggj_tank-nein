@@ -15,6 +15,7 @@ public class Turret : Enemy
 
 	protected void Update()
 	{
+
 		if (currentState == State.Idle)
 		{
 			if (Vector3.Distance(player.position, transform.position) < detectionDistance)
@@ -31,8 +32,6 @@ public class Turret : Enemy
 
 			if (Physics.Raycast(turret.position, turret.forward, out hit))
 			{
-				Debug.Log(hit.transform.name);
-
 				TankArmor hull = hit.transform.GetComponent<TankArmor>();
 
 				if (hull != null)
@@ -53,7 +52,7 @@ public class Turret : Enemy
 		}
 		else if (currentState == State.Destroyed)
 		{
-			if (time >= 2f)
+			if (time >= 1f)
 			{
 				Destroy(gameObject);
 			}

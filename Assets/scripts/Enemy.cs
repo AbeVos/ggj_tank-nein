@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour, ITank
 		get { return Ammo.Laser; }
 	}
 
-	public Ammo Weakness
+	public virtual Ammo Weakness
 	{
 		get { return Ammo.Rocket; }
 	}
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour, ITank
 		get { return currentState == State.Destroyed; }
 	}
 
-	protected void Awake()
+	protected virtual void Awake()
 	{
 		turret = transform.GetChild(0);
 	}

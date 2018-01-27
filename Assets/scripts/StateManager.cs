@@ -21,7 +21,7 @@ public class StateManager : MonoBehaviour
     public gameState currentState { get; private set; }
     public gameState previousState { get; private set; }
 
-    protected void Awake()
+    protected void Start()
     {
         MainManager.Manager.State = this;
         UIManager.Manager.UI = GetComponentInChildren<Canvas>();

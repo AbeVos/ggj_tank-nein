@@ -19,7 +19,7 @@ public class TankArmor : MonoBehaviour, ITank
 		get { return false; }
 	}
 
-	protected void Awake()
+	protected void Start()
 	{
 		MainManager.Manager.TankHull = this;
 	}
