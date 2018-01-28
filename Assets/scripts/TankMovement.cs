@@ -23,13 +23,14 @@ public class TankMovement : MonoBehaviour
     private Gear currentGear;
 
     private bool isCoupled;
-    private bool engineStopped;
+    public bool engineStopped;
 
     private int requiredGear;
     private int previousForwardInput;
     private int currentForwardInput;
     private int currentSidewaysInput;
-    public float acceleration;
+    private float acceleration;
+    public float rotation { get; private set; }
 
     [SerializeField] private Image currentGearCursor;
     [SerializeField] private Image requiredGearCursor;
@@ -59,7 +60,7 @@ public class TankMovement : MonoBehaviour
     void Update()
     {
         ForwardMovement();
-        Rotation();
+        Rotate();
         HandleCoupling();
 
         if (currentForwardInput < 0)
@@ -80,7 +81,7 @@ public class TankMovement : MonoBehaviour
                 requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear - 1].position;
             }
 
-            if (rPM <= 0.1f && (int)currentGear > (int)Gear.Free)
+            if (rPM <= accelerationPeriod[(int)currentGear] - maxRpm/5 && currentGear !=Gear.Free)
             {
                 StopEngine();
             }
@@ -89,10 +90,20 @@ public class TankMovement : MonoBehaviour
 
     private void ForwardMovement()
     {
-        currentForwardInput = (int)Input.GetAxis("Controlpad Vertical");
-
+        if (!engineStopped)
+        {
+            currentForwardInput = (int)Input.GetAxis("Controlpad Vertical");
+        }
+        else
+        {
+            currentForwardInput = 0;
+        }
+        
+        // make sure rpm is increased with right input, dependant on positive or negative gear
         if (currentGear == Gear.Reverse) HandleForwardInput(1);
         else if ((int)currentGear > 1) HandleForwardInput(-1);
+        else HandleForwardInput(-1);
+
         acceleration = Acceleration(rPM);
         Vector3 velocity = friction * controller.velocity + acceleration * transform.forward;
 
@@ -106,7 +117,7 @@ public class TankMovement : MonoBehaviour
             rPM += Time.deltaTime;
 
         }
-        else rPM -= Time.deltaTime;
+        else rPM -= Time.deltaTime * 2;
 
         RotateRpmMeter();
     }
@@ -124,10 +135,17 @@ public class TankMovement : MonoBehaviour
         return 0.5f * maxAcceleration[(int)currentGear] * (Mathf.Cos(Mathf.PI * rpm / accelerationPeriod[(int)currentGear]) - 1);
     }
 
-    private void Rotation()
+    private void Rotate()
     {
-        currentSidewaysInput = (int)Input.GetAxis("Controlpad Horizontal");
-        float rotation = -1f / (controller.velocity.magnitude + 1) * angularVelocity * currentSidewaysInput;
+        if (!engineStopped)
+        {
+            currentSidewaysInput = (int)Input.GetAxis("Controlpad Horizontal");
+        }
+        else
+        {
+            currentSidewaysInput = 0;
+        }
+        rotation = -1f / (controller.velocity.magnitude + 1) * angularVelocity * currentSidewaysInput;
         controller.transform.eulerAngles += rotation * transform.up;
     }
 
@@ -154,7 +172,9 @@ public class TankMovement : MonoBehaviour
     private void StopEngine()
     {
         engineStopped = true;
-
+        requiredGearCursor.transform.position = GearCursorPositions[2].position;
+        currentGear = Gear.Free;
+        currentGearCursor.transform.position = GearCursorPositions[1].position;
     }
 
     public void StartEngine()
