@@ -23,6 +23,7 @@ public class TankMovement : MonoBehaviour
     private Gear currentGear;
 
     private bool isCoupled;
+    private bool engineStopped;
 
     private int requiredGear;
     private int previousForwardInput;
@@ -67,6 +68,10 @@ public class TankMovement : MonoBehaviour
             {
                 requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear + 1].position;
             }
+            if (rPM >= maxRpm - 0.1f)
+            {
+                StopEngine();
+            }
         }
         else
         {
@@ -74,11 +79,22 @@ public class TankMovement : MonoBehaviour
             {
                 requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear - 1].position;
             }
+
+            if (rPM <= 0.1f && (int)currentGear > (int)Gear.Free)
+            {
+                StopEngine();
+            }
         }
     }
 
     private void ForwardMovement()
     {
+        // Blokade als niet samen spelen ?
+        if (Mathf.Abs(Input.GetAxis("Controlpad Vertical")) > 0 && Input.GetButton("R Button")) {
+            StopEngine();
+            return;
+        }
+
         currentForwardInput = (int)Input.GetAxis("Controlpad Vertical");
 
         if (currentGear == Gear.Reverse) HandleForwardInput(1);
@@ -139,5 +155,16 @@ public class TankMovement : MonoBehaviour
                 currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
             }
         }
+    }
+
+    private void StopEngine()
+    {
+        engineStopped = true;
+
+    }
+
+    public void StartEngine()
+    {
+        engineStopped = false;
     }
 }
