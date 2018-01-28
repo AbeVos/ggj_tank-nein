@@ -89,10 +89,10 @@ public class TankAiming : MonoBehaviour
         float yAxis = Input.GetAxis("Analog Stick Y");
 
         // cancel out movement rotation
-        float parentRotation = parent.localEulerAngles.y;
         TankMovement parentMovement = parent.GetComponent<TankMovement>();
         transform.localEulerAngles -= parentMovement.rotation * parent.up;
         transform.eulerAngles += xAxis * (Time.deltaTime * turretPanSpeed) * parent.up;
+        UIManager.Manager.UI.transform.Find("TurretDirection").GetComponentInChildren<Image>().transform.eulerAngles += parentMovement.rotation * Vector3.forward;
 
         cannon.localEulerAngles += Time.deltaTime * turretTiltSpeed * yAxis * Vector3.right;
 
