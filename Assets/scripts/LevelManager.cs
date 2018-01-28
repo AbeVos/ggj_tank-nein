@@ -21,8 +21,8 @@ public class LevelManager : MonoBehaviour
 
 	public void LoadInitialLevel()
 	{
-		LoadLevel("start_scene");
-	}
+        LoadLevel("start_scene");
+    }
 
 	public void LoadLevel(string name)
 	{
