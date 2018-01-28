@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour, ITank
 
 	public virtual Ammo Weakness
 	{
-		get { return Ammo.Rocket; }
+		get { return Ammo.Laser; }
 	}
 
 	public bool Destroyed

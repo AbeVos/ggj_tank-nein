@@ -106,7 +106,7 @@ public class TankAiming : MonoBehaviour
         target.y = transform.position.y;
 
         Quaternion direction = Quaternion.LookRotation(target - transform.position, parent.up);
-        transform.rotation = Quaternion.Slerp(transform.rotation, direction, Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, direction, Time.deltaTime);
 
         // Cannon rotation
         float distance = Vector3.Distance(transform.position, lockTarget.position);
