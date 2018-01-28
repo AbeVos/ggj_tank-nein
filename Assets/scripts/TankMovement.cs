@@ -45,6 +45,9 @@ public class TankMovement : MonoBehaviour
     [SerializeField] private float maxRpm = 5f;
     [Range(0, 1)] [SerializeField] private float friction;
 
+    private float displayedSpeed = 0;
+    private Vector3 velocity;
+
 
     private float rPM;
 
@@ -64,6 +67,10 @@ public class TankMovement : MonoBehaviour
 
     void Update()
     {
+        displayedSpeed = Mathf.Lerp(displayedSpeed, velocity.magnitude, 2 * Time.deltaTime);
+
+        UIManager.Manager.UI.transform.Find("SpeedHud").Find("SpeedBar").GetComponent<Image>().fillAmount = displayedSpeed / 50f;
+
         ForwardMovement();
         Rotate();
         HandleCoupling();
@@ -98,12 +105,6 @@ public class TankMovement : MonoBehaviour
         if (!engineStopped)
         {
             currentForwardInput = (int)Input.GetAxis("Controlpad Vertical");
-
-            //if (currentForwardInput != 0 && Input.GetButton("R Button"))
-            //{
-            //    StopEngine();
-            //    currentForwardInput = 0;
-            //}
         }
         else
         {
@@ -115,7 +116,7 @@ public class TankMovement : MonoBehaviour
         else HandleForwardInput(-1);
 
         acceleration = Acceleration(rPM);
-        Vector3 velocity = friction * controller.velocity + acceleration * transform.forward;
+        velocity = friction * controller.velocity + acceleration * transform.forward;
 
         controller.SimpleMove(velocity);
     }
