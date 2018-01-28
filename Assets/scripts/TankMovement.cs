@@ -128,12 +128,12 @@ public class TankMovement : MonoBehaviour
 
         if (isCoupled)
         {
-            if (Input.GetButtonDown("A Button") && (int)currentGear < maxAcceleration.Length - 1)
+            if (Input.GetButtonDown("B Button") && (int)currentGear < maxAcceleration.Length - 1)
             {
                 currentGear++;
                 currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
             }
-            else if (Input.GetButtonDown("B Button") && (int)currentGear > 0)
+            else if (Input.GetButtonDown("A Button") && (int)currentGear > 0)
             {
                 currentGear--;
                 currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
