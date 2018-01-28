@@ -6,16 +6,11 @@ using FMOD.Studio;
 
 public class TankAudioController : MonoBehaviour
 {
-    private float turretSpeedvalue, healthValue;
+    private float turretSpeedvalue;
 
     public float TurretValue
     {
         set { turretSpeedvalue = value; }
-    }
-
-    public float HealthValue
-    {
-        set { healthValue = value; }
     }
 
     public void PlayLockon()
@@ -47,16 +42,17 @@ public class TankAudioController : MonoBehaviour
 #if true
     [Header("Persitent events")]
 
-    [SerializeField, FMODUnity.EventRef] private string brakeInstanceEvent;
+    [SerializeField, FMODUnity.EventRef]
+    private string brakeInstanceEvent;
     [SerializeField, FMODUnity.EventRef] private string engineEvent;
     [SerializeField, FMODUnity.EventRef] private string ambienceEvent;
     [SerializeField, FMODUnity.EventRef] private string turretMoveEvent;
     [SerializeField, FMODUnity.EventRef] private string spinMoveEvent;
-    [SerializeField, FMODUnity.EventRef] private string musicEvent;
 
     [Header("Oneshots")]
 
-    [SerializeField, FMODUnity.EventRef] private string gearshiftOneShotEvent;
+    [SerializeField, FMODUnity.EventRef]
+    private string gearshiftOneShotEvent;
     [SerializeField, FMODUnity.EventRef] private string clutchOneShotEvent;
     [SerializeField, FMODUnity.EventRef] private string brakeOneShotEvent;
     [SerializeField, FMODUnity.EventRef] private string lockonOneShotEvent;
@@ -67,30 +63,26 @@ public class TankAudioController : MonoBehaviour
 
     [Header("Parameter names")]
 
-    [SerializeField] private string brakeParam;
+    [SerializeField]
+    private string brakeParam;
     [SerializeField] private string engineSpeedParam;
     [SerializeField] private string engineClutchParam;
     [SerializeField] private string ambienceSpeedParam;
     [SerializeField] private string turretSpeedParam;
-    [SerializeField] private string spinMoveParam;    
-    [SerializeField] private string musicIntenseParam;
-    [SerializeField] private string musicHealthParam;
+    [SerializeField] private string spinMoveParam;
 
     private EventInstance brakeInstance;
     private EventInstance ambienceInstance;
     private EventInstance engineInstance;
     private EventInstance turretInstance;
     private EventInstance spinMoveInstance;
-    private EventInstance musicInstance;
 
     private ParameterInstance paramTankEngineSpeed;
     private ParameterInstance paramTankEngineClutch;
     private ParameterInstance paramAmbinceSpeed;
     private ParameterInstance paramBrake;
     private ParameterInstance paramTurretSpeed;
-    private ParameterInstance paramSpinMove;    
-    private ParameterInstance paramMusicIntense;
-    private ParameterInstance paramMusicHealth;
+    private ParameterInstance paramSpinMove;
 
     private CharacterController controller;
     private bool isBraking = false;
@@ -102,25 +94,20 @@ public class TankAudioController : MonoBehaviour
         engineInstance = FMODUnity.RuntimeManager.CreateInstance(engineEvent);
         turretInstance = FMODUnity.RuntimeManager.CreateInstance(turretMoveEvent);
         spinMoveInstance = FMODUnity.RuntimeManager.CreateInstance(spinMoveEvent);
-        musicInstance = FMODUnity.RuntimeManager.CreateInstance(musicEvent);
 
         brakeInstance.getParameter(brakeParam, out paramBrake);
         engineInstance.getParameter(engineSpeedParam, out paramTankEngineSpeed);
         engineInstance.getParameter(engineClutchParam, out paramTankEngineClutch);
         ambienceInstance.getParameter(ambienceSpeedParam, out paramAmbinceSpeed);
         turretInstance.getParameter(turretSpeedParam, out paramTurretSpeed);
-        spinMoveInstance.getParameter(spinMoveParam, out paramSpinMove);        
-        musicInstance.getParameter(musicIntenseParam, out paramMusicIntense);
-        musicInstance.getParameter(musicHealthParam, out paramMusicHealth);
+        spinMoveInstance.getParameter(spinMoveParam, out paramSpinMove);
         
         brakeInstance.start();
         ambienceInstance.start();
         engineInstance.start();
         turretInstance.start();
         spinMoveInstance.start();
-        
-        musicInstance.start();
-        paramMusicIntense.setValue(0.1f); // temp !!! <<<<<<<<<<<<<<<<<8
+
 
         controller = GetComponent<CharacterController>();
     }
@@ -131,7 +118,6 @@ public class TankAudioController : MonoBehaviour
         paramAmbinceSpeed.setValue(Mathf.Clamp(controller.velocity.magnitude, 0.25f, 10f));
         paramTurretSpeed.setValue(turretSpeedvalue / 30f);
         paramSpinMove.setValue(Mathf.Abs(Input.GetAxis("Controlpad Horizontal")));
-        paramMusicHealth.setValue(healthValue);
 
         // Brakes
         if (Input.GetButtonDown("L Button"))
@@ -168,8 +154,6 @@ public class TankAudioController : MonoBehaviour
         {
             FMODUnity.RuntimeManager.PlayOneShot(clutchOneShotEvent, transform.position);
         }
-
-
 
     }
 #endif
