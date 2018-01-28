@@ -224,7 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionDistance: 20
   reloadTime: 10
-  turret: {fileID: 0}
+  turret: {fileID: 4569614445961650}
 --- !u!135 &135569558422556306
 SphereCollider:
   m_ObjectHideFlags: 1

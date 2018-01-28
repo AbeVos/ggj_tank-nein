@@ -4,109 +4,109 @@ using UnityEngine;
 
 public class Spider : Enemy
 {
-	[SerializeField] private float wanderRange = 5f;
-	[SerializeField] private float minimumRange = 5f;
+    [SerializeField] private float wanderRange = 5f;
+    [SerializeField] private float minimumRange = 5f;
 
-	private Transform player;
-	private UnityEngine.AI.NavMeshAgent agent;
-	private Vector3 startPosition;
+    private Transform player;
+    private UnityEngine.AI.NavMeshAgent agent;
+    private Vector3 startPosition;
 
     private float reloading = 0f;
 
-	public override Ammo Weakness
-	{
-		get { return Ammo.Laser; }
-	}
+    public override Ammo Weakness
+    {
+        get { return Ammo.Laser; }
+    }
 
-	protected override void Awake()
-	{
-		base.Awake();
+    protected override void Awake()
+    {
+        base.Awake();
 
-		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-		startPosition = transform.position;
-	}
+        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        startPosition = transform.position;
+    }
 
-	protected override void Start()
-	{
-		base.Start();
+    protected override void Start()
+    {
+        base.Start();
 
-		if (MainManager.Manager.TankHull != null)
-			player = MainManager.Manager.TankHull.transform;
-	}
+        if (MainManager.Manager.TankHull != null)
+            player = MainManager.Manager.TankHull.transform;
+    }
 
-	protected void Update()
-	{
-		if (player == null)
-			player = MainManager.Manager.TankHull.transform;
+    protected void Update()
+    {
+        if (player == null)
+            player = MainManager.Manager.TankHull.transform;
 
-		if (currentState == State.Idle)
-		{
-			if (time >= 2f)
-			{
-				SelectDestination();
-				SetState(State.Patrol);
-			}
-		}
-		else if (currentState == State.Patrol)
-		{
-			if (agent.remainingDistance < 1f)
-			{
-				SetState(State.Idle);
-			}
-		}
-		else if (currentState == State.Pursuit)
-		{
-			agent.SetDestination(player.position);
+        if (currentState == State.Idle)
+        {
+            if (time >= 2f)
+            {
+                SelectDestination();
+                SetState(State.Patrol);
+            }
+        }
+        else if (currentState == State.Patrol)
+        {
+            if (agent.remainingDistance < 1f)
+            {
+                SetState(State.Idle);
+            }
+        }
+        else if (currentState == State.Pursuit)
+        {
+            agent.SetDestination(player.position);
 
-			if (agent.remainingDistance <= minimumRange)
-			{
-				agent.SetDestination(transform.position);
-				SetState(State.Attack);
-			}
-		}
-		else if (currentState == State.Attack)
-		{
-			Quaternion rotation = Quaternion.LookRotation(turret.position - player.position, turret.forward);
-			turret.rotation = Quaternion.Slerp(turret.rotation, rotation, 0.5f * Time.deltaTime);
+            if (agent.remainingDistance <= minimumRange)
+            {
+                agent.SetDestination(transform.position);
+                SetState(State.Attack);
+            }
+        }
+        else if (currentState == State.Attack)
+        {
+            Quaternion rotation = Quaternion.LookRotation(turret.position - player.position, turret.forward);
+            turret.rotation = Quaternion.Slerp(turret.rotation, rotation, 0.5f * Time.deltaTime);
 
-			RaycastHit hit;
+            RaycastHit hit;
 
-			if (Physics.Raycast(turret.position, turret.forward, out hit))
-			{
-				TankArmor hull = hit.transform.GetComponent<TankArmor>();
+            if (Physics.Raycast(turret.position, -turret.forward, out hit))
+            {
+                TankArmor hull = hit.transform.GetComponent<TankArmor>();
+                
+                if (hull != null && reloading >= reloadTime)
+                {
+                    Debug.Log("Knal");
+                    hull.Hit(CurrentAmmo);
 
-				if (hull != null && reloading >= reloadTime)
-				{
-					Debug.Log("Knal");
-					hull.Hit(CurrentAmmo);
+                    reloading = 0f;
 
-				    reloading = 0f;
+                    SelectDestination();
+                    SetState(State.Patrol);
+                }
+            }
+        }
+        else if (currentState == State.Destroyed)
+        {
+            if (time >= 2f)
+            {
+                Destroy(gameObject);
+            }
+        }
 
-					SelectDestination();
-					SetState(State.Patrol);
-				}
-			}
-		}
-		else if (currentState == State.Destroyed)
-		{
-			if (time >= 2f)
-			{
-				Destroy(gameObject);
-			}
-		}
+        if (currentState == State.Idle || currentState == State.Patrol)
+        {
+            if (Vector3.Distance(player.position, transform.position) < detectionDistance)
+                SetState(State.Pursuit);
+        }
 
-		if (currentState == State.Idle || currentState == State.Patrol)
-		{
-			if (Vector3.Distance(player.position, transform.position) < detectionDistance)
-				SetState(State.Pursuit);
-		}
+        reloading += Time.deltaTime;
+        time += Time.deltaTime;
+    }
 
-	    reloading += Time.deltaTime;
-		time += Time.deltaTime;
-	}
-
-	private void SelectDestination()
-	{
-		agent.SetDestination(startPosition + wanderRange * Random.insideUnitSphere);
-	}
+    private void SelectDestination()
+    {
+        agent.SetDestination(startPosition + wanderRange * Random.insideUnitSphere);
+    }
 }

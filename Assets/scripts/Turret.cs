@@ -25,12 +25,12 @@ public class Turret : Enemy
 		}
 		else if (currentState == State.Pursuit)
 		{
-			Quaternion rotation = Quaternion.LookRotation(player.position - turret.position, Vector3.up);
+			Quaternion rotation = Quaternion.LookRotation(turret.position - player.position, Vector3.up);
 			turret.rotation = Quaternion.Slerp(turret.rotation, rotation, 0.5f * Time.deltaTime);
 
 			RaycastHit hit;
 
-			if (Physics.Raycast(turret.position, turret.forward, out hit))
+			if (Physics.Raycast(turret.position, -turret.forward, out hit))
 			{
 				TankArmor hull = hit.transform.GetComponent<TankArmor>();
 
