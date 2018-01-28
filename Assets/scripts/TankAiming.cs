@@ -8,6 +8,7 @@ public class TankAiming : MonoBehaviour
     [SerializeField] private float turretTiltSpeed = 1f;
 
     [SerializeField] private Ammo currentAmmoType = Ammo.Laser;
+    [SerializeField] private TankAudioController audioController;
 
     private Transform parent;
     private Transform cannon;
@@ -46,7 +47,7 @@ public class TankAiming : MonoBehaviour
             AutoMoveTurret();
         }
 
-        if (Input.GetButtonDown("L Button") || Input.GetButtonDown("Z Button"))
+        if (Input.GetButtonDown("Z Button"))
         {
             int mask = LayerMask.GetMask("Tank");
             RaycastHit hit;
@@ -59,6 +60,7 @@ public class TankAiming : MonoBehaviour
                 if (target != null)
                 {
                     // Fire at target and check if it is destroyed
+                    audioController.PlayFire(currentAmmoType);
                     bool hasDied = target.Hit(currentAmmoType);
                     if (hasDied) lockedOn = false;
                 }
@@ -78,6 +80,8 @@ public class TankAiming : MonoBehaviour
         transform.eulerAngles += xAxis * (Time.deltaTime * turretPanSpeed) * parent.up;
 
         cannon.localEulerAngles += Time.deltaTime * turretTiltSpeed * yAxis * Vector3.right;
+
+        audioController.TurretValue = new Vector2(turretPanSpeed * xAxis, turretTiltSpeed * yAxis).magnitude;
     }
 
     private void AutoMoveTurret()
@@ -112,6 +116,7 @@ public class TankAiming : MonoBehaviour
             if (tank != null)
             {
                 Debug.Log(currentAmmoType + "," + tank.Weakness + ", " + tank.GetType());
+                audioController.PlayLockon();
                 return true && !tank.Destroyed && currentAmmoType == tank.Weakness;
             }
         }

@@ -93,13 +93,18 @@ public class TankMovement : MonoBehaviour
         if (!engineStopped)
         {
             currentForwardInput = (int)Input.GetAxis("Controlpad Vertical");
+
+            if (currentForwardInput != 0 && Input.GetButton("R Button"))
+            {
+                StopEngine();
+                currentForwardInput = 0;
+            }
         }
         else
         {
             currentForwardInput = 0;
         }
-        
-        // make sure rpm is increased with right input, dependant on positive or negative gear
+
         if (currentGear == Gear.Reverse) HandleForwardInput(1);
         else if ((int)currentGear > 1) HandleForwardInput(-1);
         else HandleForwardInput(-1);
@@ -156,12 +161,12 @@ public class TankMovement : MonoBehaviour
 
         if (isCoupled)
         {
-            if (Input.GetButtonDown("A Button") && (int)currentGear < maxAcceleration.Length - 1)
+            if (Input.GetButtonDown("B Button") && (int)currentGear < maxAcceleration.Length - 1)
             {
                 currentGear++;
                 currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
             }
-            else if (Input.GetButtonDown("B Button") && (int)currentGear > 0)
+            else if (Input.GetButtonDown("A Button") && (int)currentGear > 0)
             {
                 currentGear--;
                 currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
