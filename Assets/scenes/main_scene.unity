@@ -9045,7 +9045,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 96.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.z
@@ -14030,7 +14030,7 @@ GameObject:
   - component: {fileID: 643731272}
   - component: {fileID: 643731271}
   m_Layer: 5
-  m_Name: Huldirection
+  m_Name: HullDirection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16650,7 +16650,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.z
@@ -19131,10 +19131,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d411a7184382d1d45818f6344cc38e3f, type: 2}
   engineCodes:
   - {fileID: 11400000, guid: d411a7184382d1d45818f6344cc38e3f, type: 2}
-  buttonPressEvent: 
-  codeTypeEvent: 
-  codeRightEvent: 
-  CodeWrongEvent: 
+  buttonPressEvent: event:/Tank_redbutton_on
+  codeTypeEvent: event:/Tank_UIarrow
+  codeRightEvent: event:/Tank_redbutton_goed
+  CodeWrongEvent: event:/Tank_redbutton_fout
 --- !u!1 &1042418994
 GameObject:
   m_ObjectHideFlags: 0
@@ -19985,7 +19985,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4958310423178044, guid: 9140bf03b09586641b7516fc7e3c7335, type: 2}
       propertyPath: m_LocalRotation.y
-      value: -0.97356606
+      value: -0.9277534
       objectReference: {fileID: 0}
     - target: {fileID: 4958310423178044, guid: 9140bf03b09586641b7516fc7e3c7335, type: 2}
       propertyPath: m_LocalRotation.z
@@ -19993,7 +19993,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4958310423178044, guid: 9140bf03b09586641b7516fc7e3c7335, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0.22840579
+      value: -0.37319386
       objectReference: {fileID: 0}
     - target: {fileID: 4958310423178044, guid: 9140bf03b09586641b7516fc7e3c7335, type: 2}
       propertyPath: m_RootOrder
@@ -20024,7 +20024,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4958310423178044, guid: 9140bf03b09586641b7516fc7e3c7335, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -153.59401
+      value: -223.825
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114859745144319586, guid: 9140bf03b09586641b7516fc7e3c7335, type: 2}
@@ -29881,7 +29881,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.z
@@ -30374,6 +30374,10 @@ Prefab:
     - target: {fileID: 4663602620265484, guid: 37114d61faa6547d9bd493fd3ff351de, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1435086458838626, guid: 37114d61faa6547d9bd493fd3ff351de, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37114d61faa6547d9bd493fd3ff351de, type: 2}
@@ -36428,7 +36432,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 96.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.z
@@ -42395,7 +42399,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 96.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4110297497668786, guid: 4b046bbbf93ab4b8684567f49e853f51, type: 2}
       propertyPath: m_LocalPosition.z
