@@ -13,13 +13,15 @@ public class TankAudioController : MonoBehaviour
         set { turretSpeedvalue = value; }
     }
 #if true
-    [SerializeField, FMODUnity.EventRef] private string brakeOneShotEvent;
+    [Header("Persitent events")]
     [SerializeField, FMODUnity.EventRef] private string brakeInstanceEvent;
     [SerializeField, FMODUnity.EventRef] private string engineEvent;
     [SerializeField, FMODUnity.EventRef] private string ambienceEvent;
-    [SerializeField, FMODUnity.EventRef] private string clutchOneShotEvent;
-    [SerializeField, FMODUnity.EventRef] private string gearshiftOneShotEvent;
     [SerializeField, FMODUnity.EventRef] private string turretMoveEvent;
+	[Header("Oneshots")]
+	[SerializeField, FMODUnity.EventRef] private string gearshiftOneShotEvent;
+	[SerializeField, FMODUnity.EventRef] private string clutchOneShotEvent;
+	[SerializeField, FMODUnity.EventRef] private string brakeOneShotEvent;
 
     [SerializeField] private string brakeParam;
     [SerializeField] private string engineSpeedParam;
