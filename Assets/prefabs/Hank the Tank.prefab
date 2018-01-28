@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 124108908883993496}
   - component: {fileID: 81289463382726984}
   - component: {fileID: 114256673584744300}
+  - component: {fileID: 114104397812871032}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -154,7 +155,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1092313396599480}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -188,7 +189,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939189534218202}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -249,6 +250,20 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413648163959264}
   m_Enabled: 1
+--- !u!114 &114104397812871032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413648163959264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c65140cfeab2a4193bc0f119ff770de5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0
+  shakeAmount: 1
+  decreaseFactor: 5
 --- !u!114 &114189906063958088
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -346,7 +361,7 @@ MonoBehaviour:
   - 4
   - 5
   - 6
-  angularVelocity: 2
+  angularVelocity: 0.5
   maxRpm: 6
   friction: 0.3
 --- !u!114 &114785517615963814

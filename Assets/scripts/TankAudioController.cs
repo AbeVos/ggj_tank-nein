@@ -22,9 +22,9 @@ public class TankAudioController : MonoBehaviour
     {
         FMODUnity.RuntimeManager.PlayOneShot(lockonOneShotEvent, transform.position);
     }
-    public void PlayFire(bool isLaser)
+    public void PlayFire(Ammo ammoType)
     {
-        if (isLaser)
+        if (ammoType == Ammo.Laser)
         {
             FMODUnity.RuntimeManager.PlayOneShot(laserFireOneShotEvent, transform.position);
         }

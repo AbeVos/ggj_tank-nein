@@ -49,7 +49,7 @@ public class TankArmor : MonoBehaviour, ITank
             float randomValue = Vector3.Dot(Random.insideUnitSphere, Vector3.left);
 
             health -= damage + randomValue;
-
+            Camera.main.GetComponent<ScreenShake>().shakeDuration = 1f;
             audioController.PlayHit(true);
             audioController.HealthValue = 1 - (health/100f);
             return true;

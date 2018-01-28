@@ -47,7 +47,7 @@ public class TankAiming : MonoBehaviour
             AutoMoveTurret();
         }
 
-        if (Input.GetButtonDown("L Button") || Input.GetButtonDown("Z Button"))
+        if (Input.GetButtonDown("Z Button"))
         {
             int mask = LayerMask.GetMask("Tank");
             RaycastHit hit;
@@ -60,6 +60,7 @@ public class TankAiming : MonoBehaviour
                 if (target != null)
                 {
                     // Fire at target and check if it is destroyed
+                    audioController.PlayFire(currentAmmoType);
                     bool hasDied = target.Hit(currentAmmoType);
                     if (hasDied) lockedOn = false;
                 }
