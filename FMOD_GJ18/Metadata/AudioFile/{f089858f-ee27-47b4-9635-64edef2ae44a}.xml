@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{f089858f-ee27-47b4-9635-64edef2ae44a}">
+        <property name="assetPath">
+            <value>Music/melodyoneshot_02.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>48</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>11.294124999999999</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{8f0ed7f5-d3e9-4f5e-8f68-21dc68cfb3a2}</destination>
+        </relationship>
+    </object>
+</objects>

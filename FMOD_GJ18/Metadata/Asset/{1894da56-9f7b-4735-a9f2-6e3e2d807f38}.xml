@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="EncodableAsset" id="{1894da56-9f7b-4735-a9f2-6e3e2d807f38}">
+        <property name="assetPath">
+            <value>Spider_shot/</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{8f0ed7f5-d3e9-4f5e-8f68-21dc68cfb3a2}</destination>
+        </relationship>
+    </object>
+</objects>
