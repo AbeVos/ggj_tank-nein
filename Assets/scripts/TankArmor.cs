@@ -10,7 +10,6 @@ public class TankArmor : MonoBehaviour, ITank
     private Image armorBar;
 
     [SerializeField] private float damage = 20f;
-    [SerializeField] private LevelMusic music;    
     [SerializeField] private TankAudioController audioController;
 
     public Ammo CurrentAmmo
@@ -52,7 +51,7 @@ public class TankArmor : MonoBehaviour, ITank
             health -= damage + randomValue;
             Camera.main.GetComponent<ScreenShake>().shakeDuration = 1f;
             audioController.PlayHit(true);
-            music.HealthValue = 1 - (health/100f);
+            MainManager.Manager.music.HealthValue = 1 - (health/100f);
             return true;
         }
         return false;

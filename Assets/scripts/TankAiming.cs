@@ -18,7 +18,7 @@ public class TankAiming : MonoBehaviour
         set { currentAmmoType = value; }
     }
 
-    private bool lockedOn;
+    private bool lockedOn, playedLockon;
     private Transform lockTarget;
 
     protected void Awake()
@@ -111,11 +111,15 @@ public class TankAiming : MonoBehaviour
             if (tank != null)
             {
                 Debug.Log(currentAmmoType + "," + tank.Weakness + ", " + tank.GetType());
-                audioController.PlayLockon();
+                if (!playedLockon)
+                {
+                    audioController.PlayLockon();
+                    playedLockon = true;
+                }
                 return true && !tank.Destroyed && currentAmmoType == tank.Weakness;
             }
         }
-
+        playedLockon = false;
         return false;
     }
 }
