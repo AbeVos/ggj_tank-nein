@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TankAiming : MonoBehaviour
 {
@@ -13,9 +14,23 @@ public class TankAiming : MonoBehaviour
     private Transform parent;
     private Transform cannon;
 
+    [SerializeField] private Sprite laserSprite;
+    [SerializeField] private Sprite rocketSprite;
+
     public Ammo CurrentAmmoType
     {
-        set { currentAmmoType = value; }
+        set
+        {
+            currentAmmoType = value;
+            if (currentAmmoType == Ammo.Laser)
+            {
+                UIManager.Manager.UI.transform.Find("Crosshair").GetComponent<Image>().sprite = laserSprite;
+            }
+            else if (currentAmmoType == Ammo.Rocket)
+            {
+                UIManager.Manager.UI.transform.Find("Crosshair").GetComponent<Image>().sprite = rocketSprite;
+            }
+        }
     }
 
     private bool lockedOn, playedLockon;

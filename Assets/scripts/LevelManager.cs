@@ -21,7 +21,7 @@ public class LevelManager : MonoBehaviour
 
 	public void LoadInitialLevel()
 	{
-		LoadLevel("splash_screen");
+		LoadLevel("start_scene");
 	}
 
 	public void LoadLevel(string name)
@@ -30,8 +30,7 @@ public class LevelManager : MonoBehaviour
 		{
 			SceneManager.UnloadSceneAsync(currentScene);
 		}
-
-		if (SceneManager.sceneCount > 1)
+		else if (SceneManager.sceneCount > 1)
 		{
 			Debug.Log("A level has already been loaded.");
 			return;
