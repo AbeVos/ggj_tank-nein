@@ -11,3 +11,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/splash_screen.unity
     guid: 27b8c5f689ef14d478e65268155c7e04
+  - enabled: 1
+    path: Assets/scenes/start_scene.unity
+    guid: cfffa8e951919a649b60075c47516a68
+  - enabled: 1
+    path: Assets/scenes/lose screen.unity
+    guid: d206b4342198c99408afd1fbccdee372
+  - enabled: 1
+    path: Assets/scenes/win_screen.unity
+    guid: 281ab015c63a08a4eb69b649dfa5286c
+  - enabled: 1
+    path: Assets/scenes/main_scene.unity
+    guid: d958622c867fe2143b3907e9361e6b6d

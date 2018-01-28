@@ -35,7 +35,7 @@ public class StateManager : MonoBehaviour
 
     public void SwitchState(gameState targetState)
     {
-        // Debug.Log(string.Format("Changing from {0} to {1}", currentState, targetState));
+        Debug.Log(string.Format("Changing from {0} to {1}", currentState, targetState));
         previousState = currentState;
         currentState = targetState;
         ActionOnSwitch(currentState);

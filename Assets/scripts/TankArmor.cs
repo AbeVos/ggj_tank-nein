@@ -39,6 +39,16 @@ public class TankArmor : MonoBehaviour, ITank
         armorBar.fillAmount = displayedHealth / 100f;
 
         if (Input.GetKeyDown(KeyCode.Space)) { Hit(Ammo.Laser);}
+
+        if (displayedHealth <= 0)
+        {
+            Lose();
+        }
+    }
+
+    private void Lose()
+    {
+        LevelManager.Manager.LoadLevel("lose screen");
     }
 
     public bool Hit(Ammo ammoType)
