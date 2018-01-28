@@ -1,0 +1,274 @@
+fileFormatVersion: 2
+guid: ec8808308842f3449b282a112adbdace
+timeCreated: 1517061469
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: L_leg_3
+    100002: L_leg_4
+    100004: L_leg_4 1
+    100006: L_leg_4 2
+    100008: L_leg_5
+    100010: L_leg_5 1
+    100012: L_leg_5 2
+    100014: L_leg_6
+    100016: L_leg_6 1
+    100018: L_leg_6 2
+    100020: L_leg_7
+    100022: L_leg_8
+    100024: R_leg_3
+    100026: R_leg_4
+    100028: R_leg_4 1
+    100030: R_leg_4 2
+    100032: R_leg_5
+    100034: R_leg_5 1
+    100036: R_leg_5 2
+    100038: R_leg_6
+    100040: R_leg_6 1
+    100042: R_leg_6 2
+    100044: R_leg_7
+    100046: R_leg_8
+    100048: spider_body
+    100050: spider_head
+    100052: spider_root
+    100054: //RootNode
+    100056: tank_body
+    100058: tank_leg1
+    100060: tank_leg10
+    100062: tank_leg11
+    100064: tank_leg12
+    100066: tank_leg13
+    100068: tank_leg14
+    100070: tank_leg15
+    100072: tank_leg16
+    100074: tank_leg17
+    100076: tank_leg18
+    100078: tank_leg2
+    100080: tank_leg3
+    100082: tank_leg4
+    100084: tank_leg5
+    100086: tank_leg6
+    100088: tank_leg7
+    100090: tank_leg8
+    100092: tank_leg9
+    100094: tank_top
+    400000: L_leg_3
+    400002: L_leg_4
+    400004: L_leg_4 1
+    400006: L_leg_4 2
+    400008: L_leg_5
+    400010: L_leg_5 1
+    400012: L_leg_5 2
+    400014: L_leg_6
+    400016: L_leg_6 1
+    400018: L_leg_6 2
+    400020: L_leg_7
+    400022: L_leg_8
+    400024: R_leg_3
+    400026: R_leg_4
+    400028: R_leg_4 1
+    400030: R_leg_4 2
+    400032: R_leg_5
+    400034: R_leg_5 1
+    400036: R_leg_5 2
+    400038: R_leg_6
+    400040: R_leg_6 1
+    400042: R_leg_6 2
+    400044: R_leg_7
+    400046: R_leg_8
+    400048: spider_body
+    400050: spider_head
+    400052: spider_root
+    400054: //RootNode
+    400056: tank_body
+    400058: tank_leg1
+    400060: tank_leg10
+    400062: tank_leg11
+    400064: tank_leg12
+    400066: tank_leg13
+    400068: tank_leg14
+    400070: tank_leg15
+    400072: tank_leg16
+    400074: tank_leg17
+    400076: tank_leg18
+    400078: tank_leg2
+    400080: tank_leg3
+    400082: tank_leg4
+    400084: tank_leg5
+    400086: tank_leg6
+    400088: tank_leg7
+    400090: tank_leg8
+    400092: tank_leg9
+    400094: tank_top
+    2100000: lambert1
+    2300000: tank_body
+    2300002: tank_leg1
+    2300004: tank_leg10
+    2300006: tank_leg11
+    2300008: tank_leg12
+    2300010: tank_leg13
+    2300012: tank_leg14
+    2300014: tank_leg15
+    2300016: tank_leg16
+    2300018: tank_leg17
+    2300020: tank_leg18
+    2300022: tank_leg2
+    2300024: tank_leg3
+    2300026: tank_leg4
+    2300028: tank_leg5
+    2300030: tank_leg6
+    2300032: tank_leg7
+    2300034: tank_leg8
+    2300036: tank_leg9
+    2300038: tank_top
+    3300000: tank_body
+    3300002: tank_leg1
+    3300004: tank_leg10
+    3300006: tank_leg11
+    3300008: tank_leg12
+    3300010: tank_leg13
+    3300012: tank_leg14
+    3300014: tank_leg15
+    3300016: tank_leg16
+    3300018: tank_leg17
+    3300020: tank_leg18
+    3300022: tank_leg2
+    3300024: tank_leg3
+    3300026: tank_leg4
+    3300028: tank_leg5
+    3300030: tank_leg6
+    3300032: tank_leg7
+    3300034: tank_leg8
+    3300036: tank_leg9
+    3300038: tank_top
+    4300000: tank_leg6
+    4300002: tank_leg5
+    4300004: tank_leg4
+    4300006: tank_leg3
+    4300008: tank_leg2
+    4300010: tank_leg1
+    4300012: tank_leg9
+    4300014: tank_leg8
+    4300016: tank_leg7
+    4300018: tank_leg12
+    4300020: tank_leg11
+    4300022: tank_leg10
+    4300024: tank_leg15
+    4300026: tank_leg14
+    4300028: tank_leg13
+    4300030: tank_leg18
+    4300032: tank_leg17
+    4300034: tank_leg16
+    4300036: tank_body
+    4300038: tank_top
+    7400000: spider_walk_noRoot
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: spider_walk_noRoot
+      takeName: Take 001
+      firstFrame: 5
+      lastFrame: 48
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
