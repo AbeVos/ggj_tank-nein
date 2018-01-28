@@ -122,7 +122,7 @@ public class ConsoleMiniGame : MonoBehaviour
         {
             MotorCode motorCode = (MotorCode) foundCode;
 
-            // TODO: fix hier nog iets van een motorcode ofso, is wel fijn I guess
+            MainManager.Manager.TankMovement.StartEngine();
         }
     }
 
