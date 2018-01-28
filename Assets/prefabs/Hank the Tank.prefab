@@ -261,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  audioController: {fileID: 114273916326880632}
 --- !u!114 &114256673584744300
 MonoBehaviour:
   m_ObjectHideFlags: 1

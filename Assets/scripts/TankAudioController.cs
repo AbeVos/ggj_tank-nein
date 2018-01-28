@@ -111,7 +111,7 @@ public class TankAudioController : MonoBehaviour
         turretInstance.getParameter(turretSpeedParam, out paramTurretSpeed);
         spinMoveInstance.getParameter(spinMoveParam, out paramSpinMove);        
         musicInstance.getParameter(musicIntenseParam, out paramMusicIntense);
-        musicInstance.getParameter(musicIntenseParam, out paramMusicIntense);
+        musicInstance.getParameter(musicHealthParam, out paramMusicHealth);
         
         brakeInstance.start();
         ambienceInstance.start();
@@ -119,7 +119,7 @@ public class TankAudioController : MonoBehaviour
         turretInstance.start();
         spinMoveInstance.start();
         
-        //musicInstance.start();
+        musicInstance.start();
         paramMusicIntense.setValue(0.1f); // temp !!! <<<<<<<<<<<<<<<<<8
 
         controller = GetComponent<CharacterController>();
@@ -131,6 +131,7 @@ public class TankAudioController : MonoBehaviour
         paramAmbinceSpeed.setValue(Mathf.Clamp(controller.velocity.magnitude, 0.25f, 10f));
         paramTurretSpeed.setValue(turretSpeedvalue / 30f);
         paramSpinMove.setValue(Mathf.Abs(Input.GetAxis("Controlpad Horizontal")));
+        paramMusicHealth.setValue(healthValue);
 
         // Brakes
         if (Input.GetButtonDown("L Button"))

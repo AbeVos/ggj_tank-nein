@@ -26,8 +26,8 @@ public class ConsoleMiniGame : MonoBehaviour
     void Awake()
     {
         consoleIsVisible = false;
-        backgroundImage = consoleBackground.GetComponent<Image>();
-        backgroundImage.color = new Color(1,1,1,0);
+        backgroundImage = consoleBackground.GetComponent<Image>();  
+        backgroundImage.CrossFadeAlpha(0.0f,0.2f,false);
     }
 
     void Update()
@@ -137,8 +137,9 @@ public class ConsoleMiniGame : MonoBehaviour
             codeToCheck.Clear();
             correctCode = false;
             consoleBackground.GetComponent<Image>().color = Color.white;
-            canOpenConsole  = true;
+
         }
+        canOpenConsole  = true;
     }
     #endif
 }
