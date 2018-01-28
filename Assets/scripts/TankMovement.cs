@@ -57,6 +57,11 @@ public class TankMovement : MonoBehaviour
         isCoupled = false;
     }
 
+    protected void Start()
+    {
+        MainManager.Manager.TankMovement = this;
+    }
+
     void Update()
     {
         ForwardMovement();
@@ -94,11 +99,11 @@ public class TankMovement : MonoBehaviour
         {
             currentForwardInput = (int)Input.GetAxis("Controlpad Vertical");
 
-            if (currentForwardInput != 0 && Input.GetButton("R Button"))
-            {
-                StopEngine();
-                currentForwardInput = 0;
-            }
+            //if (currentForwardInput != 0 && Input.GetButton("R Button"))
+            //{
+            //    StopEngine();
+            //    currentForwardInput = 0;
+            //}
         }
         else
         {

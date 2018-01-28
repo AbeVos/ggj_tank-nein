@@ -38,7 +38,6 @@ public class TankArmor : MonoBehaviour, ITank
         displayedHealth = Mathf.Lerp(displayedHealth, health, 2 * Time.deltaTime);
         armorBar.fillAmount = displayedHealth / 100f;
 
-
         if (Input.GetKeyDown(KeyCode.Space)) { Hit(Ammo.Laser);}
     }
 

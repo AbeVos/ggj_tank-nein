@@ -362,10 +362,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cControlSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300002, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300006, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300004, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300000, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
 --- !u!1 &147292318
 GameObject:
   m_ObjectHideFlags: 0
@@ -2599,10 +2599,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cControlSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300002, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300006, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300004, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300000, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
 --- !u!1 &514053381 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1092313396599480, guid: 4424c2a477335164b8e67ee9a8a521f8,
@@ -2620,6 +2620,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  audioController: {fileID: 514053384}
+--- !u!114 &514053384 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114273916326880632, guid: 4424c2a477335164b8e67ee9a8a521f8,
+    type: 2}
+  m_PrefabInternal: {fileID: 829913425}
+  m_Script: {fileID: 11500000, guid: 982ea6ea211ed4ab0956da628f482364, type: 3}
 --- !u!4 &514053389 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4117973229532194, guid: 4424c2a477335164b8e67ee9a8a521f8,
@@ -2790,10 +2797,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cControlSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300002, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300006, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300004, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300000, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
 --- !u!1 &567087710
 GameObject:
   m_ObjectHideFlags: 0
@@ -4043,6 +4050,21 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114189906063958088, guid: 4424c2a477335164b8e67ee9a8a521f8,
+        type: 2}
+      propertyPath: audioController
+      value: 
+      objectReference: {fileID: 514053384}
+    - target: {fileID: 114785517615963814, guid: 4424c2a477335164b8e67ee9a8a521f8,
+        type: 2}
+      propertyPath: audioController
+      value: 
+      objectReference: {fileID: 514053384}
+    - target: {fileID: 114273916326880632, guid: 4424c2a477335164b8e67ee9a8a521f8,
+        type: 2}
+      propertyPath: turretMoveEvent
+      value: event:/Tank_canonhead_movement
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4424c2a477335164b8e67ee9a8a521f8, type: 2}
@@ -5468,6 +5490,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d411a7184382d1d45818f6344cc38e3f, type: 2}
   engineCodes:
   - {fileID: 11400000, guid: d411a7184382d1d45818f6344cc38e3f, type: 2}
+  buttonPressEvent: 
+  codeTypeEvent: 
+  codeRightEvent: 
+  CodeWrongEvent: 
 --- !u!1 &1066521789
 GameObject:
   m_ObjectHideFlags: 0
@@ -5633,10 +5659,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cControlSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300002, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300006, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300004, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300000, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
 --- !u!1 &1088387471
 GameObject:
   m_ObjectHideFlags: 0
@@ -5886,10 +5912,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cControlSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300002, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300006, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300004, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300000, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
 --- !u!1 &1136886078
 GameObject:
   m_ObjectHideFlags: 0
@@ -8532,10 +8558,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cControlSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 21300002, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300006, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300004, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
+  - {fileID: 21300000, guid: d4e29e56dd386d04c99feeceb37e639e, type: 3}
 --- !u!1 &1820314707
 GameObject:
   m_ObjectHideFlags: 0
