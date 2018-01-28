@@ -10,6 +10,10 @@ public class MainManager : MonoBehaviour
     public TankAiming TankTurret { get; set; }
 	public TankArmor TankHull { get; set; }
     public TankMovement TankMovement { get; set; }
+	
+	public LevelMusic music { get{
+		return Manager.GetComponent<LevelMusic>();
+	}}
 
 	public static MainManager Manager
 	{
@@ -30,5 +34,6 @@ public class MainManager : MonoBehaviour
 	protected void Start()
 	{
 		LevelManager.Manager.LoadInitialLevel();
+		gameObject.AddComponent<LevelMusic>();
 	}
 }

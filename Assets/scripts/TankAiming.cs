@@ -33,7 +33,7 @@ public class TankAiming : MonoBehaviour
         }
     }
 
-    private bool lockedOn;
+    private bool lockedOn, playedLockon;
     private Transform lockTarget;
 
     protected void Awake()
@@ -106,7 +106,7 @@ public class TankAiming : MonoBehaviour
         target.y = transform.position.y;
 
         Quaternion direction = Quaternion.LookRotation(target - transform.position, parent.up);
-        transform.rotation = Quaternion.Slerp(transform.rotation, direction, Time.deltaTime);
+        transform.rotation = Quaternion.Lerp(transform.rotation, direction, Time.deltaTime);
 
         // Cannon rotation
         float distance = Vector3.Distance(transform.position, lockTarget.position);
@@ -131,11 +131,15 @@ public class TankAiming : MonoBehaviour
             if (tank != null)
             {
                 Debug.Log(currentAmmoType + "," + tank.Weakness + ", " + tank.GetType());
-                audioController.PlayLockon();
+                if (!playedLockon)
+                {
+                    audioController.PlayLockon();
+                    playedLockon = true;
+                }
                 return true && !tank.Destroyed && currentAmmoType == tank.Weakness;
             }
         }
-
+        playedLockon = false;
         return false;
     }
 }

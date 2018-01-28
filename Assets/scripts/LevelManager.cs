@@ -38,5 +38,6 @@ public class LevelManager : MonoBehaviour
 
 		currentScene = name;
 		SceneManager.LoadScene(name, LoadSceneMode.Additive);
+		MainManager.Manager.music.StartMainMusic = 0.1f;
 	}
 }

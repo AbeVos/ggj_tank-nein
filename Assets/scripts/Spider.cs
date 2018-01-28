@@ -11,6 +11,8 @@ public class Spider : Enemy
 	private UnityEngine.AI.NavMeshAgent agent;
 	private Vector3 startPosition;
 
+    private float reloading = 0f;
+
 	public override Ammo Weakness
 	{
 		get { return Ammo.Laser; }
@@ -64,7 +66,7 @@ public class Spider : Enemy
 		}
 		else if (currentState == State.Attack)
 		{
-			Quaternion rotation = Quaternion.LookRotation(player.position - turret.position, Vector3.up);
+			Quaternion rotation = Quaternion.LookRotation(turret.position - player.position, turret.forward);
 			turret.rotation = Quaternion.Slerp(turret.rotation, rotation, 0.5f * Time.deltaTime);
 
 			RaycastHit hit;
@@ -73,10 +75,12 @@ public class Spider : Enemy
 			{
 				TankArmor hull = hit.transform.GetComponent<TankArmor>();
 
-				if (hull != null)
+				if (hull != null && reloading >= reloadTime)
 				{
 					Debug.Log("Knal");
 					hull.Hit(CurrentAmmo);
+
+				    reloading = 0f;
 
 					SelectDestination();
 					SetState(State.Patrol);
@@ -97,6 +101,7 @@ public class Spider : Enemy
 				SetState(State.Pursuit);
 		}
 
+	    reloading += Time.deltaTime;
 		time += Time.deltaTime;
 	}
 

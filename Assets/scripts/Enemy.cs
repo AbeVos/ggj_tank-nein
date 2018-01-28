@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour, ITank
 	[SerializeField] protected float reloadTime = 10f;
 
 	protected State currentState = State.Inactive;
-	protected Transform turret;
+	[SerializeField]protected Transform turret;
 	protected float time = 0f;
 
 	public Ammo CurrentAmmo
@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour, ITank
 
 	public virtual Ammo Weakness
 	{
-		get { return Ammo.Rocket; }
+		get { return Ammo.Laser; }
 	}
 
 	public bool Destroyed
@@ -38,8 +38,8 @@ public class Enemy : MonoBehaviour, ITank
 
 	protected virtual void Awake()
 	{
-		turret = transform.GetChild(0);
-	}
+        //turret = transform.GetChild(0);
+    }
 
 	protected virtual void Start()
 	{

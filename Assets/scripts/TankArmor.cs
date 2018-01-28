@@ -38,7 +38,7 @@ public class TankArmor : MonoBehaviour, ITank
         displayedHealth = Mathf.Lerp(displayedHealth, health, 2 * Time.deltaTime);
         armorBar.fillAmount = displayedHealth / 100f;
 
-        if (Input.GetKeyDown(KeyCode.Space)) { Hit(Ammo.Laser); }
+        if (Input.GetKeyDown(KeyCode.Space)) { Hit(Ammo.Laser);}
 
         if (displayedHealth <= 0)
         {
@@ -60,7 +60,7 @@ public class TankArmor : MonoBehaviour, ITank
             health -= damage + randomValue;
             Camera.main.GetComponent<ScreenShake>().shakeDuration = 1f;
             audioController.PlayHit(true);
-            audioController.HealthValue = 1 - (health / 100f);
+            MainManager.Manager.music.HealthValue = 1 - (health/100f);
             return true;
         }
         return false;
