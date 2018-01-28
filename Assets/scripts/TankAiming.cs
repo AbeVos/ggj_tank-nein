@@ -92,7 +92,7 @@ public class TankAiming : MonoBehaviour
         TankMovement parentMovement = parent.GetComponent<TankMovement>();
         transform.localEulerAngles -= parentMovement.rotation * parent.up;
         transform.eulerAngles += xAxis * (Time.deltaTime * turretPanSpeed) * parent.up;
-        UIManager.Manager.UI.transform.Find("TurretDirection").GetComponentInChildren<Image>().transform.eulerAngles += parentMovement.rotation * Vector3.forward;
+        UIManager.Manager.UI.transform.Find("TurretDirection").Find("HullDirection").GetComponent<Image>().transform.eulerAngles = transform.localEulerAngles.y * Vector3.forward;
 
         cannon.localEulerAngles += Time.deltaTime * turretTiltSpeed * yAxis * Vector3.right;
 
