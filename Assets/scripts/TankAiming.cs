@@ -110,6 +110,7 @@ public class TankAiming : MonoBehaviour
             if (tank != null)
             {
                 Debug.Log(currentAmmoType + "," + tank.Weakness + ", " + tank.GetType());
+                audioController.PlayLockon();
                 return true && !tank.Destroyed && currentAmmoType == tank.Weakness;
             }
         }
