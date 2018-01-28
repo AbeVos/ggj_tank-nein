@@ -32,3 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+FMOD_GJ18/.*
+
+.vscode

@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 23143885318451452}
   - component: {fileID: 143590092023107390}
   - component: {fileID: 114605941353645218}
+  - component: {fileID: 114273916326880632}
+  - component: {fileID: 114189906063958088}
   m_Layer: 0
   m_Name: Hank the Tank
   m_TagString: Player
@@ -42,6 +44,7 @@ GameObject:
   - component: {fileID: 20214702343466936}
   - component: {fileID: 124108908883993496}
   - component: {fileID: 81289463382726984}
+  - component: {fileID: 114256673584744300}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -60,7 +63,7 @@ GameObject:
   - component: {fileID: 33935492666571608}
   - component: {fileID: 135764360794086550}
   - component: {fileID: 23728280839073160}
-  - component: {fileID: 114267748529001456}
+  - component: {fileID: 114785517615963814}
   m_Layer: 0
   m_Name: HanksGezicht
   m_TagString: Untagged
@@ -74,13 +77,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413648163959264}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4630523768923868}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &4117973229532194
 Transform:
   m_ObjectHideFlags: 1
@@ -246,17 +249,64 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1413648163959264}
   m_Enabled: 1
---- !u!114 &114267748529001456
+--- !u!114 &114189906063958088
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1939189534218202}
+  m_GameObject: {fileID: 1092313396599480}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a17c137c06f114c7ca3000f193a4701b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
+  audioController: {fileID: 114273916326880632}
+--- !u!114 &114256673584744300
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1413648163959264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ListenerNumber: 0
+--- !u!114 &114273916326880632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1092313396599480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 982ea6ea211ed4ab0956da628f482364, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brakeInstanceEvent: event:/Tank_Braking_loop
+  engineEvent: event:/Tank_Engine_01
+  ambienceEvent: event:/Tank_Ambience_01
+  turretMoveEvent: event:/Tank_canonhead_movement
+  spinMoveEvent: event:/Tank_leftright
+  musicEvent: event:/music/Music
+  gearshiftOneShotEvent: event:/Tank_Gearshift
+  clutchOneShotEvent: event:/Tank_koppeling
+  brakeOneShotEvent: event:/Tank_Braking_oneshot
+  lockonOneShotEvent: event:/Tank_lockon
+  obstacleHitOneShotEvent: event:/Tank_hitobstacle
+  enemyHitOneShotEvent: event:/Spider_shot
+  laserFireOneShotEvent: event:/Tank_laser
+  rocketFireOneShotEvent: event:/Tank_Projectile
+  brakeParam: Tank_braking
+  engineSpeedParam: tank_speed
+  engineClutchParam: koppeling
+  ambienceSpeedParam: tank_speed
+  turretSpeedParam: tankhead_movement
+  spinMoveParam: Tank_leftright
+  musicIntenseParam: music_intensiteit
+  musicHealthParam: health_param
 --- !u!114 &114605941353645218
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -268,10 +318,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59572eb6ed854f048bad2d05498c1fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rPM: 0
-  maxrPM: 0
-  verticalSpeed: 3
-  horizontalSpeed: 3
+  acceleration: 0
+  currentGearCursor: {fileID: 0}
+  requiredGearCursor: {fileID: 0}
+  GearCursorPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rpmPivot: {fileID: 0}
+  maxAcceleration:
+  - -2
+  - 0
+  - 2
+  - 3
+  - 5
+  - 6
+  - 7
+  accelerationPeriod:
+  - 1
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  angularVelocity: 2
+  maxRpm: 6
+  friction: 0.3
+--- !u!114 &114785517615963814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939189534218202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71533ed09007642f5bbc56272fe88367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretPanSpeed: 25
+  turretTiltSpeed: 25
+  currentAmmoType: 0
+  audioController: {fileID: 114273916326880632}
 --- !u!124 &124108908883993496
 Behaviour:
   m_ObjectHideFlags: 1
