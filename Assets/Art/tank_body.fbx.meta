@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 2491852f02974864dbbd05b738561c45
-timeCreated: 1517117063
+guid: 65b8928c18a5e2e4eb68702f7956bb28
+timeCreated: 1517130121
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
@@ -10,8 +10,7 @@ ModelImporter:
     2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: polySurface58
-    4300002: polySurface60
+    4300000: tank_body
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -67,7 +66,7 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
-  importAnimation: 1
+  importAnimation: 0
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
