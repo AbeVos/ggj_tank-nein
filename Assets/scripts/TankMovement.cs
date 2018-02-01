@@ -42,9 +42,9 @@ public class TankMovement : MonoBehaviour
     [SerializeField] private float[] accelerationPeriod;
 
     [SerializeField] private float angularVelocity;
-    [SerializeField] private float maxRpm = 5f;
     [Range(0, 1)] [SerializeField] private float friction;
 
+    private float maxRpm = 5000f;
     private float displayedSpeed = 0;
     private Vector3 velocity;
 
@@ -75,28 +75,48 @@ public class TankMovement : MonoBehaviour
         Rotate();
         HandleCoupling();
 
+        // If we're inputting forward (is reversed)
         if (currentForwardInput < 0)
         {
-            if (rPM >= Mathf.Abs(accelerationPeriod[(int)currentGear]) && (int)currentGear < (int)Gear.GearFive)
-            {
-                requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear + 1].position;
-            }
-            if (rPM >= maxRpm - 0.1f)
-            {
-                StopEngine();
-            }
+            MoveGearcursorUp();
+            StopEngineOnTooHighRpm();
         }
         else
         {
-            if (rPM <= Mathf.Abs(accelerationPeriod[(int)currentGear - 1]) && (int)currentGear > (int)Gear.GearOne)
-            {
-                requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear - 1].position;
-            }
+            MoveGearCursorDown();
+            StopEngineOnTooLowRpm();
+        }
+    }
 
-            if (rPM <= accelerationPeriod[(int)currentGear] - maxRpm/5 && currentGear !=Gear.Free)
-            {
-                StopEngine();
-            }
+    private void MoveGearCursorDown()
+    {
+        if (rPM <= Mathf.Abs(accelerationPeriod[(int)currentGear - 1]) && (int)currentGear > (int)Gear.GearOne)
+        {
+            requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear - 1].position;
+        }
+    }
+
+    private void MoveGearcursorUp()
+    {
+        if (rPM >= Mathf.Abs(accelerationPeriod[(int)currentGear]) && (int)currentGear < (int)Gear.GearFive)
+        {
+            requiredGearCursor.transform.position = GearCursorPositions[(int)currentGear + 1].position;
+        }
+    }
+
+    private void StopEngineOnTooHighRpm()
+    {
+        if (rPM >= maxRpm - 0.1f)
+        {
+            StopEngine();
+        }
+    }
+
+    private void StopEngineOnTooLowRpm()
+    {
+        if (rPM <= accelerationPeriod[(int)currentGear] - maxRpm / 5 && currentGear != Gear.Free)
+        {
+            StopEngine();
         }
     }
 
@@ -126,10 +146,10 @@ public class TankMovement : MonoBehaviour
     {
         if (currentForwardInput == input)
         {
-            rPM += Time.deltaTime;
+            rPM += Time.deltaTime * 1000;
 
         }
-        else rPM -= Time.deltaTime * 2;
+        else rPM -= Time.deltaTime * 1500;
 
         RotateRpmMeter();
     }
@@ -173,11 +193,13 @@ public class TankMovement : MonoBehaviour
             if (Input.GetButtonDown("B Button") && (int)currentGear < maxAcceleration.Length - 1)
             {
                 currentGear++;
+                rPM -= 2000;
                 currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
             }
             else if (Input.GetButtonDown("A Button") && (int)currentGear > 0)
             {
                 currentGear--;
+                rPM += 2000;
                 currentGearCursor.transform.position = GearCursorPositions[(int)currentGear].position;
             }
         }

@@ -17700,6 +17700,11 @@ Prefab:
       propertyPath: GearCursorPositions.Array.data[6]
       value: 
       objectReference: {fileID: 1361061522}
+    - target: {fileID: 114627533477810976, guid: 9140bf03b09586641b7516fc7e3c7335,
+        type: 2}
+      propertyPath: maxRpm
+      value: 5000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9140bf03b09586641b7516fc7e3c7335, type: 2}
   m_IsPrefabParent: 0
