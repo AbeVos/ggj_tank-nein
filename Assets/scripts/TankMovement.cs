@@ -32,11 +32,12 @@ public class TankMovement : MonoBehaviour
     private float acceleration;
     public float rotation { get; private set; }
 
-    [SerializeField] private Image currentGearCursor;
-    [SerializeField] private Image requiredGearCursor;
+    private Image currentGearCursor;
+    private Image requiredGearCursor;
+    private Image speedBar;
     [SerializeField] private Transform[] GearCursorPositions;
 
-    [SerializeField] private RectTransform rpmPivot;
+    private RectTransform rpmPivot;
 
     [SerializeField] private float[] maxAcceleration;
     [SerializeField] private float[] accelerationPeriod;
@@ -46,6 +47,7 @@ public class TankMovement : MonoBehaviour
 
     private float maxRpm = 5000f;
     private float displayedSpeed = 0;
+    [SerializeField]  private float currentSpeed = 0;
     private Vector3 velocity;
 
 
@@ -63,17 +65,21 @@ public class TankMovement : MonoBehaviour
     protected void Start()
     {
         MainManager.Manager.TankMovement = this;
+        rpmPivot = UIManager.Manager.UI.transform.Find("rPMPivot").GetComponent<RectTransform>();
+        currentGearCursor = UIManager.Manager.UI.transform.Find("GearChanging").Find("CurrentGearCursor").GetComponent<Image>();
+        requiredGearCursor = UIManager.Manager.UI.transform.Find("GearChanging").Find("RequiredGearCursor").GetComponent<Image>();
+        speedBar = UIManager.Manager.UI.transform.Find("SpeedHud").Find("SpeedBar").GetComponent<Image>();
     }
 
     void Update()
     {
-        displayedSpeed = Mathf.Lerp(displayedSpeed, velocity.magnitude, 2 * Time.deltaTime);
-
-        UIManager.Manager.UI.transform.Find("SpeedHud").Find("SpeedBar").GetComponent<Image>().fillAmount = displayedSpeed / 50f;
+        //currentspeed for debug purposes
+        currentSpeed = velocity.magnitude;
 
         ForwardMovement();
-        Rotate();
+        Rotation();
         HandleCoupling();
+        ShowSpeed();
 
         // If we're inputting forward (is reversed)
         if (currentForwardInput < 0)
@@ -146,19 +152,12 @@ public class TankMovement : MonoBehaviour
     {
         if (currentForwardInput == input)
         {
-            rPM += Time.deltaTime * 1000;
+            rPM += Time.deltaTime * (1100 - (int)currentGear * 100);
 
         }
         else rPM -= Time.deltaTime * 1500;
 
         RotateRpmMeter();
-    }
-
-    private void RotateRpmMeter()
-    {
-        rPM = Mathf.Clamp(rPM, 0, maxRpm);
-        float angle = -(125f / maxRpm) * rPM + 30;
-        rpmPivot.eulerAngles = Vector3.forward * angle;
     }
 
     private float Acceleration(float rPM)
@@ -167,19 +166,19 @@ public class TankMovement : MonoBehaviour
         return 0.5f * maxAcceleration[(int)currentGear] * (Mathf.Cos(Mathf.PI * rpm / accelerationPeriod[(int)currentGear]) - 1);
     }
 
-    private void Rotate()
+    private void Rotation()
     {
         if (!engineStopped)
         {
             currentSidewaysInput = (int)Input.GetAxis("Controlpad Horizontal");
-            currentSidewaysInput = (int)Input.GetAxis("Horizontal");
+            currentSidewaysInput = -(int)Input.GetAxis("Horizontal");
 
         }
         else
         {
             currentSidewaysInput = 0;
         }
-        rotation = -1f / (controller.velocity.magnitude + 1) * angularVelocity * currentSidewaysInput;
+        rotation = -1f / angularVelocity * currentSidewaysInput;
         controller.transform.eulerAngles += rotation * transform.up;
     }
 
@@ -216,5 +215,18 @@ public class TankMovement : MonoBehaviour
     public void StartEngine()
     {
         engineStopped = false;
+    }
+
+    private void RotateRpmMeter()
+    {
+        rPM = Mathf.Clamp(rPM, 0, maxRpm);
+        float angle = -(125f / maxRpm) * rPM + 30;
+        rpmPivot.eulerAngles = Vector3.forward * angle;
+    }
+
+    private void ShowSpeed()
+    {
+        displayedSpeed = Mathf.Lerp(displayedSpeed, velocity.magnitude, 2 * Time.deltaTime);
+        speedBar.fillAmount = displayedSpeed / 10f;
     }
 }
