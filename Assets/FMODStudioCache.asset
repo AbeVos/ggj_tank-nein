@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EditorBanks:
   - {fileID: 114782266613057862}
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   EditorEvents:
   - {fileID: 114937898300589550}
   - {fileID: 114984916851480656}
@@ -37,7 +37,7 @@ MonoBehaviour:
   - {fileID: 114871054837204966}
   - {fileID: 114955776091006580}
   - {fileID: 114854375328369260}
-  MasterBankRef: {fileID: 114546218964766216}
+  MasterBankRef: {fileID: 114490610798396776}
   StringsBankRef: {fileID: 114782266613057862}
   stringsBankWriteTime: 636527443698744868
   cacheVersion: 2
@@ -126,12 +126,12 @@ MonoBehaviour:
   Path: event:/Tank_Ambience_01
   guid: 127243673d484048a61d4ea39a169833
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114622973746132534}
+  - {fileID: 114995801419119578}
   MinDistance: 0
   MaxDistance: 0
   Length: 11912
@@ -149,7 +149,7 @@ MonoBehaviour:
   Path: event:/Spider_shot
   guid: 1d13a3f5416eda4bae53d7178d45e160
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -241,6 +241,21 @@ MonoBehaviour:
   - Name: Desktop
     Value: 1510
   Exists: 1
+--- !u!114 &114048800255885782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: tank_speed
+  Min: 0
+  Max: 10
+  Default: 0
 --- !u!114 &114054868942270526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +270,7 @@ MonoBehaviour:
   Path: event:/music/Lost_music
   guid: 0265e14045f7cd48bc08cf13b9dedf18
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -406,12 +421,12 @@ MonoBehaviour:
   Path: event:/Tank_Braking_oneshot
   guid: ea4609bb69daab469d8d3d9c27bbbddc
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
   Parameters:
-  - {fileID: 114093387081506072}
+  - {fileID: 114618831914068598}
   MinDistance: 0
   MaxDistance: 0
   Length: 762
@@ -444,6 +459,21 @@ MonoBehaviour:
   Name: tank_speed
   Min: 0
   Max: 10
+  Default: 0
+--- !u!114 &114125205965433152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: koppeling
+  Min: 0
+  Max: 1
   Default: 0
 --- !u!114 &114132274676781436
 MonoBehaviour:
@@ -498,6 +528,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114150448500420148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: tankhead_movement
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114163330526943456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -512,13 +557,13 @@ MonoBehaviour:
   Path: event:/music/Music
   guid: 73f82b3fe4ca9f4e95b70139b4ee56e4
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114921394169481386}
-  - {fileID: 114272157713060196}
+  - {fileID: 114856355867337724}
+  - {fileID: 114374538150493096}
   MinDistance: 0
   MaxDistance: 0
   Length: 22588
@@ -566,7 +611,7 @@ MonoBehaviour:
   Path: event:/Tank_redbutton_on
   guid: a9baa18d4ef61d4bbbbbfb06fcdadc8a
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -739,6 +784,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114274727349755910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: health_param
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114287779775123134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,7 +936,7 @@ MonoBehaviour:
   Path: event:/Tank_Projectile
   guid: cbb6559ca259a34697135ebaf60a4430
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -884,6 +944,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 6194
+--- !u!114 &114341015963299506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Tank_leftright
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114347287955172856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -913,6 +988,21 @@ MonoBehaviour:
   Name: tank_speed
   Min: 0
   Max: 10
+  Default: 0
+--- !u!114 &114374538150493096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: health_param
+  Min: 0
+  Max: 1
   Default: 0
 --- !u!114 &114377344116486052
 MonoBehaviour:
@@ -1211,6 +1301,40 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 22588
+--- !u!114 &114475171691209268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: music_intensiteit
+  Min: 0
+  Max: 1.1
+  Default: 0
+--- !u!114 &114490610798396776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Denise\Documents\Global Game Jam 2018\FMOD_GJ18\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636527443698714848
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 8265184
+  Exists: 1
 --- !u!114 &114494233016165266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1412,12 +1536,12 @@ MonoBehaviour:
   Path: event:/Tank_Braking_loop
   guid: 3603ff8905f1634f9f1eb19d2600849d
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114948262846611528}
+  - {fileID: 114960857155491362}
   MinDistance: 0
   MaxDistance: 0
   Length: 6655
@@ -1454,6 +1578,21 @@ MonoBehaviour:
   Name: tank_speed
   Min: 0
   Max: 10
+  Default: 0
+--- !u!114 &114554237774413792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Tank_braking
+  Min: 0
+  Max: 1
   Default: 0
 --- !u!114 &114561526178616914
 MonoBehaviour:
@@ -1618,7 +1757,7 @@ MonoBehaviour:
   Path: event:/Tank_Gearshift
   guid: 520402078c02304db5bc33b716a0a441
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1689,6 +1828,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114618831914068598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Tank_braking
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114619716066006234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,13 +1879,13 @@ MonoBehaviour:
   Path: event:/Tank_Engine_01
   guid: 3b7006b3677d91429a1cb620ebf4b068
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114666965735018012}
-  - {fileID: 114057231499926186}
+  - {fileID: 114696407058145086}
+  - {fileID: 114048800255885782}
   MinDistance: 0
   MaxDistance: 0
   Length: 15356
@@ -1810,6 +1964,21 @@ MonoBehaviour:
   Min: 0
   Max: 10
   Default: 0
+--- !u!114 &114656401634228670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: tank_speed
+  Min: 0
+  Max: 10
+  Default: 0
 --- !u!114 &114663640820255998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1869,7 +2038,7 @@ MonoBehaviour:
   Path: event:/Tank_hitobstacle
   guid: cefb71ad67b1d94087c65167bb495917
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -1919,6 +2088,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Tank_braking
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114696407058145086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: koppeling
   Min: 0
   Max: 1
   Default: 0
@@ -2012,6 +2196,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114726421033645456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: tankhead_movement
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114730359577247092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2086,7 +2285,7 @@ MonoBehaviour:
   Path: event:/Tank_redbutton_fout
   guid: fbca8797be773b48baed1df20b7745da
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2132,6 +2331,21 @@ MonoBehaviour:
   Min: 0
   Max: 1
   Default: 0
+--- !u!114 &114765064335568828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Tank_braking
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114767492017933168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2161,12 +2375,12 @@ MonoBehaviour:
   Path: event:/Tank_leftright
   guid: e479b3c949b42146b2f027411d3ed402
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114142480667102380}
+  - {fileID: 114848727756509420}
   MinDistance: 0
   MaxDistance: 0
   Length: 9734
@@ -2358,6 +2572,24 @@ MonoBehaviour:
   Min: 0
   Max: 10
   Default: 0
+--- !u!114 &114824680022761934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: /Users/mathijs/ggj_tank-nein/FMOD_GJ18/Build/Desktop/Master Bank.bank
+  lastModified: 636527385370000000
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 8265184
+  Exists: 1
 --- !u!114 &114828571389388114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2372,7 +2604,7 @@ MonoBehaviour:
   Path: event:/Tank_lockon
   guid: 2c4d7aa05782434d9a81c9689cb2cbac
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2442,7 +2674,7 @@ MonoBehaviour:
   Path: event:/Tank_laser
   guid: 6418101098a1f84190ebd602af9b9f1c
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2450,6 +2682,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 5500
+--- !u!114 &114848727756509420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Tank_leftright
+  Min: 0
+  Max: 1
+  Default: 0
 --- !u!114 &114849470143807698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2538,7 +2785,7 @@ MonoBehaviour:
   Path: event:/Engine_fail
   guid: b5cd8abcf9c6404b9304729f7d602dda
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2546,6 +2793,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 3263
+--- !u!114 &114856355867337724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: music_intensiteit
+  Min: 0
+  Max: 1.1
+  Default: 0
 --- !u!114 &114860577969116852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2575,7 +2837,7 @@ MonoBehaviour:
   Path: event:/Spider_Dead
   guid: 1c3491fe8ddd2e489271749d70d5fb79
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -2717,7 +2979,7 @@ MonoBehaviour:
   Path: event:/Tank_redbutton_goed
   guid: d7c06997e64aab41a2b4513b3c61136a
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2739,7 +3001,7 @@ MonoBehaviour:
   Path: event:/Tank_koppeling
   guid: 06d9ccdfa430e74d9b53ebd479af2ffd
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2761,6 +3023,21 @@ MonoBehaviour:
   Name: Tank_braking
   Min: 0
   Max: 1
+  Default: 0
+--- !u!114 &114941775479550568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: tank_speed
+  Min: 0
+  Max: 10
   Default: 0
 --- !u!114 &114942347998289518
 MonoBehaviour:
@@ -2836,7 +3113,7 @@ MonoBehaviour:
   Path: event:/music/Win_music
   guid: 559bb8e02626d442b413686b6864cbed
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -2845,6 +3122,21 @@ MonoBehaviour:
   MaxDistance: 0
   Length: 22588
 --- !u!114 &114959753231022748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Tank_braking
+  Min: 0
+  Max: 1
+  Default: 0
+--- !u!114 &114960857155491362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -2895,12 +3187,12 @@ MonoBehaviour:
   Path: event:/Tank_canonhead_movement
   guid: 1146a1f1492dcb409fa76965908c2ed4
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters:
-  - {fileID: 114584669032171564}
+  - {fileID: 114150448500420148}
   MinDistance: 0
   MaxDistance: 0
   Length: 9063
@@ -2918,7 +3210,7 @@ MonoBehaviour:
   Path: event:/Tank_UIarrow
   guid: bcc1120cf3be8a4e9086df2b30404329
   Banks:
-  - {fileID: 114546218964766216}
+  - {fileID: 114490610798396776}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -2926,6 +3218,21 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 450
+--- !u!114 &114995801419119578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: tank_speed
+  Min: 0
+  Max: 10
+  Default: 0
 --- !u!114 &114997376951461536
 MonoBehaviour:
   m_ObjectHideFlags: 0

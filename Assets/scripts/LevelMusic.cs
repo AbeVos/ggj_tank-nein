@@ -5,7 +5,7 @@ public class LevelMusic : MonoBehaviour
 {
     [FMODUnity.EventRef] private string musicEvent = "event:/music/Music";
 
-    private string musicIntenseParam = "musiek_intensiteit";
+    private string musicIntenseParam = "music_intensiteit";
     private string musicHealthParam = "health_param";
 
     private EventInstance musicInstance;
@@ -13,6 +13,7 @@ public class LevelMusic : MonoBehaviour
     private ParameterInstance paramMusicIntense;
     private ParameterInstance paramMusicHealth;
 
+    private bool startthething = false;
     private readonly float tenionMultiplier = 2f;
 
     private float healthValue, tentionCounter;
@@ -24,12 +25,16 @@ public class LevelMusic : MonoBehaviour
 
     public float StartMainMusic
     {
-        set { if (tentionCounter < 0.1f && value == 0.1f) tentionCounter = value; }
+        set
+        {
+            if (tentionCounter < 0.1f) tentionCounter = value;
+            startthething = true;
+        }
     }
     
     public float StartBossMusic
     {
-        set { if (value == 1f) tentionCounter = value; }
+        set { tentionCounter = value; }
     }
 
 
@@ -46,7 +51,7 @@ public class LevelMusic : MonoBehaviour
     private void Update()
     {
         paramMusicHealth.setValue(healthValue);
-        if(tentionCounter >= 0.1f || tentionCounter < 0.9f) tentionCounter += Time.deltaTime * tenionMultiplier;
+        if((tentionCounter >= 0.1f || tentionCounter < 0.8f) && startthething) tentionCounter += Time.deltaTime * tenionMultiplier;
         paramMusicIntense.setValue(tentionCounter);
     }
 }
