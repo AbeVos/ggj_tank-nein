@@ -49,7 +49,7 @@ public class TankMovement : MonoBehaviour
     private Vector3 velocity;
 
 
-    private float rPM;
+    public float rPM;
 
 
     private void Awake()
@@ -105,6 +105,7 @@ public class TankMovement : MonoBehaviour
         if (!engineStopped)
         {
             currentForwardInput = (int)Input.GetAxis("Controlpad Vertical");
+            currentForwardInput = -(int)Input.GetAxis("Vertical");
         }
         else
         {
@@ -151,6 +152,8 @@ public class TankMovement : MonoBehaviour
         if (!engineStopped)
         {
             currentSidewaysInput = (int)Input.GetAxis("Controlpad Horizontal");
+            currentSidewaysInput = (int)Input.GetAxis("Horizontal");
+
         }
         else
         {
